@@ -1063,6 +1063,155 @@
       "vegan": false,
       "available": true,
       "feature": true
+    },
+    {
+      "id": "tagliere-formaggi-sardi",
+      "title": "Tagliere di Formaggi Sardi con Miele",
+      "description": "Pecorino fresco, stagionato e fuso con miele di asfodelo e noci.",
+      "price": 12,
+      "category": "Antipasti",
+      "imageUrl": "/placeholders/antipasti.svg",
+      "images": [
+        "/placeholders/antipasti.svg"
+      ],
+      "ingredients": [
+        "pecorino",
+        "miele",
+        "noci",
+        "pane carasau"
+      ],
+      "allergens": [
+        "latte",
+        "glutine",
+        "frutta a guscio"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "zuppa-gallurese",
+      "title": "Zuppa Gallurese",
+      "description": "Pane raffermo, pecorino e brodo di carne gratinati al forno.",
+      "price": 12,
+      "category": "Primi",
+      "imageUrl": "/placeholders/primi.svg",
+      "images": [
+        "/placeholders/primi.svg"
+      ],
+      "ingredients": [
+        "pane",
+        "pecorino",
+        "brodo di carne"
+      ],
+      "allergens": [
+        "glutine",
+        "latte"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "porceddu-forno",
+      "title": "Porceddu al Forno con Patate",
+      "description": "Maialetto da latte cotto lentamente al forno con patate e rosmarino.",
+      "price": 23,
+      "category": "Secondi",
+      "imageUrl": "/placeholders/secondi.svg",
+      "images": [
+        "/placeholders/secondi.svg"
+      ],
+      "ingredients": [
+        "maialetto",
+        "patate",
+        "rosmarino"
+      ],
+      "allergens": [],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "pardulas-ricotta",
+      "title": "Pardulas di Ricotta",
+      "description": "Dolci di ricotta e zafferano della tradizione, spolvero di zucchero.",
+      "price": 6,
+      "category": "Dolci",
+      "imageUrl": "/placeholders/dolci.svg",
+      "images": [
+        "/placeholders/dolci.svg"
+      ],
+      "ingredients": [
+        "ricotta",
+        "zafferano",
+        "pasta",
+        "zucchero"
+      ],
+      "allergens": [
+        "latte",
+        "glutine",
+        "uova"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "quattro-stagioni",
+      "title": "Quattro Stagioni",
+      "description": "Pomodoro, mozzarella, prosciutto, funghi, carciofi e olive a spicchi.",
+      "price": 10,
+      "category": "Pizze Classiche",
+      "imageUrl": "/placeholders/pizza.svg",
+      "images": [
+        "/placeholders/pizza.svg"
+      ],
+      "ingredients": [
+        "pomodoro",
+        "mozzarella",
+        "prosciutto cotto",
+        "funghi",
+        "carciofi",
+        "olive"
+      ],
+      "allergens": [
+        "glutine",
+        "latte"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "parmigiana-melanzane",
+      "title": "Parmigiana con Melanzane",
+      "description": "Melanzane fritte, pomodoro, mozzarella di bufala e basilico fresco.",
+      "price": 11.5,
+      "category": "Pizze Speciali",
+      "imageUrl": "/placeholders/pizza.svg",
+      "images": [
+        "/placeholders/pizza.svg"
+      ],
+      "ingredients": [
+        "melanzane",
+        "pomodoro",
+        "bufala",
+        "basilico"
+      ],
+      "allergens": [
+        "glutine",
+        "latte"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
     }
   ]
 }
