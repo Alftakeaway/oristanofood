@@ -5,11 +5,13 @@ import {
   type ShowcaseItem,
   type SiteData,
 } from './site-data';
+import { isRedisConfigured, saveOverrides } from './overrides-store';
 import type { HourException } from './open-status';
 
 const DATA_PATH = path.join(process.cwd(), 'src', 'config', 'site-data.json');
 
-async function readFresh(): Promise<SiteData> {
+// Base versionata in git (sola lettura in produzione).
+async function readBase(): Promise<SiteData> {
   try {
     return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
   } catch {
@@ -17,8 +19,9 @@ async function readFresh(): Promise<SiteData> {
   }
 }
 
+// Dato effettivo = base + override (stessa fusione applicata alle letture).
 export async function loadData(): Promise<SiteData> {
-  return readFresh();
+  return getSiteData();
 }
 
 function singleMatch(showcase: ShowcaseItem[], needle: string): ShowcaseItem {
@@ -79,7 +82,7 @@ export async function upsertShowcaseItem(input: {
   } else {
     data.showcase.push(item);
   }
-  persist(data);
+  await persist(data);
   return { data, item };
 }
 
@@ -90,7 +93,7 @@ export async function setAvailability(
   const data = structuredClone(await loadData());
   const item = singleMatch(data.showcase, title);
   item.available = available;
-  persist(data);
+  await persist(data);
   return { data, item };
 }
 
@@ -101,7 +104,7 @@ export async function updatePrice(
   const data = structuredClone(await loadData());
   const item = singleMatch(data.showcase, title);
   item.price = price;
-  persist(data);
+  await persist(data);
   return { data, item };
 }
 
@@ -117,23 +120,34 @@ export async function setException(
   } else {
     data.exceptions.push(next);
   }
-  persist(data);
+  await persist(data);
   return data;
 }
 
 export async function removeException(date: string): Promise<SiteData> {
   const data = structuredClone(await loadData());
   data.exceptions = data.exceptions.filter((e) => e.date !== date);
-  persist(data);
+  await persist(data);
   return data;
 }
 
-function persist(data: SiteData): void {
-  try {
-    fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n', 'utf8');
-  } catch (error) {
-    console.warn('[kv-store] filesystem di sola lettura, persistenza sul file saltata:', error);
+async function persist(data: SiteData): Promise<void> {
+  // Produzione: Redis (filesystem Vercel è effimero). Sviluppo: file.
+  if (isRedisConfigured()) {
+    const ok = await saveOverrides(data);
+    if (!ok) {
+      throw new Error('Persistenza Redis fallita (vedi log [overrides])');
+    }
+    return;
   }
+  if (process.env.VERCEL) {
+    // Configurazione mancante in produzione: meglio un errore chiaro che una
+    // scrittura silenziosamente persa.
+    throw new Error(
+      'UPSTASH_REDIS_REST_URL/TOKEN mancanti: gli aggiornamenti andrebbero persi, scrittura bloccata.',
+    );
+  }
+  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n', 'utf8');
 }
 
 function slugify(text: string): string {

@@ -164,11 +164,23 @@ const DATA_PATH = path.join(process.cwd(), 'src', 'config', 'site-data.json');
 
 const readSiteData = unstable_cache(
   async (): Promise<SiteData> => {
+    let base: SiteData;
     try {
-      return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
+      base = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
     } catch {
-      return fallbackData as unknown as SiteData;
+      base = fallbackData as unknown as SiteData;
     }
+    // Override runtime (WhatsApp → Redis): se presenti, sostituiscono le liste base.
+    try {
+      const { loadOverrides } = await import('./overrides-store');
+      const overrides = await loadOverrides();
+      if (overrides) {
+        return { ...base, showcase: overrides.showcase, exceptions: overrides.exceptions };
+      }
+    } catch {
+      // Redis non configurato o irraggiungibile: vale la base (fail-open).
+    }
+    return base;
   },
   ['site-data-read'],
   { tags: ['site-data'] },
