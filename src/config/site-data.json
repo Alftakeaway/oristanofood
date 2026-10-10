@@ -421,7 +421,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "fregola-frutti-di-mare",
@@ -471,7 +471,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "lorighittas-ragu-agnello",
@@ -494,7 +494,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "grigliata-di-pesce",
@@ -565,7 +565,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": false,
-      "feature": false
+      "feature": true
     },
     {
       "id": "seadas-miele",
@@ -610,7 +610,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "panna-cotta-mirto",
@@ -632,7 +632,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "margherita-dop",
@@ -678,7 +678,7 @@
       "glutenFree": false,
       "vegan": true,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "pizza-sarda",
@@ -721,7 +721,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "fenicia-gambero-rosso",
@@ -767,7 +767,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "ortolana-vegana",
@@ -815,7 +815,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "cozze-marinara-crostoni",
@@ -840,7 +840,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "culurgiones-sugo-pecorino",
@@ -891,7 +891,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "orata-isolana-forno",
@@ -915,7 +915,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "agnello-agrodolce-carciofi",
@@ -937,7 +937,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "tiramisu-ogliastra",
@@ -984,7 +984,7 @@
       "glutenFree": true,
       "vegan": true,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "capricciosa",
@@ -1011,7 +1011,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "tonno-cipolla-tropea",
@@ -1037,7 +1037,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     },
     {
       "id": "bufalina-rucola-pachino",
@@ -1062,7 +1062,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": false
+      "feature": true
     }
   ]
 }
