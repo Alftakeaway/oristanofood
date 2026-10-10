@@ -22,7 +22,8 @@
     },
     "phone": "+39 0783 123456",
     "whatsapp": "https://wa.me/390783123456",
-    "timezone": "Europe/Rome"
+    "timezone": "Europe/Rome",
+    "priceRange": "€€"
   },
   "styles": {
     "colors": {

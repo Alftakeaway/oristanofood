@@ -14,6 +14,7 @@ import NoticeBanner from '@/components/NoticeBanner';
 import { CartProvider, CartWidget } from '@/components/cart';
 import { DietFilterProvider } from '@/components/diet-filter';
 import { getSections, getSiteData } from '@/lib/site-data';
+import { resolveBaseUrl } from '@/lib/base-url';
 import {
   DAY_ORDER,
   formatSlot,
@@ -68,11 +69,18 @@ export default async function Page() {
     ...grouped(pizzaItems).map((group) => ({ label: group.category, items: group.items })),
   ];
 
+  const baseUrl = resolveBaseUrl();
+  const logoUrl = data.businessInfo.logo.startsWith('http')
+    ? data.businessInfo.logo
+    : `${baseUrl}${data.businessInfo.logo.startsWith('/') ? '' : '/'}${data.businessInfo.logo}`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': data.businessInfo.type === 'bakery' ? 'Bakery' : 'Restaurant',
     name: data.businessInfo.name,
     description: data.businessInfo.description,
+    url: baseUrl,
+    image: logoUrl,
+    ...(data.businessInfo.priceRange ? { priceRange: data.businessInfo.priceRange } : {}),
     telephone: data.businessInfo.phone,
     address: {
       '@type': 'PostalAddress',

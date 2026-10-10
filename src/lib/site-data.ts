@@ -29,6 +29,7 @@ export interface BusinessInfo {
   geo: GeoPoint;
   phone: string;
   whatsapp: string;
+  priceRange?: string;
   timezone: string;
 }
 

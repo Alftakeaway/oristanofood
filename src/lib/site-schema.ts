@@ -68,6 +68,7 @@ export const SiteDataSchema = z.object({
     geo: z.object({ lat: z.number(), lng: z.number() }),
     phone: z.string().min(1, 'telefono mancante'),
     whatsapp: z.string().min(1, 'numero WhatsApp mancante'),
+    priceRange: z.string().regex(/^€{1,4}$/, 'priceRange: da € a €€€€').optional(),
     timezone: z.string().min(1, 'timezone mancante (es. Europe/Rome)'),
   }),
   styles: z.object({
