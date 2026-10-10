@@ -1,0 +1,236 @@
+{
+  "businessInfo": {
+    "name": "Dolce Vita",
+    "tagline": "Pasticceria Artigianale dal 1987",
+    "type": "bakery",
+    "logo": "/logo.svg",
+    "description": "Laboratorio artigianale nel cuore di Roma: lievitati a pasta madre, torte su misura e grandi classici della tradizione, preparati ogni notte con burro di centrifuga, uova fresche e farine macinate a pietra.",
+    "address": {
+      "street": "Via del Corso 123",
+      "city": "Roma",
+      "zip": "00186",
+      "country": "Italia"
+    },
+    "geo": {
+      "lat": 41.9028,
+      "lng": 12.4805
+    },
+    "phone": "+39 06 1234 5678",
+    "whatsapp": "https://wa.me/390612345678",
+    "timezone": "Europe/Rome"
+  },
+  "styles": {
+    "colors": {
+      "primary": "#A34A28",
+      "secondary": "#5C6B54",
+      "accent": "#E8B04B",
+      "background": "#FAF5EE",
+      "surface": "#FFFFFF",
+      "foreground": "#2B1D14",
+      "muted": "#8A7A6E"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Inter"
+    }
+  },
+  "hours": {
+    "monday": {
+      "isOpen": false,
+      "slots": []
+    },
+    "tuesday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "07:30",
+          "close": "13:30"
+        },
+        {
+          "open": "15:30",
+          "close": "19:30"
+        }
+      ]
+    },
+    "wednesday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "07:30",
+          "close": "13:30"
+        },
+        {
+          "open": "15:30",
+          "close": "19:30"
+        }
+      ]
+    },
+    "thursday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "07:30",
+          "close": "13:30"
+        },
+        {
+          "open": "15:30",
+          "close": "19:30"
+        }
+      ]
+    },
+    "friday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "07:30",
+          "close": "13:30"
+        },
+        {
+          "open": "15:30",
+          "close": "19:30"
+        }
+      ]
+    },
+    "saturday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "08:00",
+          "close": "19:30"
+        }
+      ]
+    },
+    "sunday": {
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "08:00",
+          "close": "13:00"
+        }
+      ]
+    }
+  },
+  "exceptions": [
+    {
+      "date": "2026-12-25",
+      "isOpen": false,
+      "note": "Chiuso per Natale"
+    },
+    {
+      "date": "2026-08-15",
+      "isOpen": true,
+      "slots": [
+        {
+          "open": "08:00",
+          "close": "13:00"
+        }
+      ],
+      "note": "Orario festivo: 08:00 – 13:00"
+    }
+  ],
+  "showcase": [
+    {
+      "id": "cornetto-madre",
+      "title": "Cornetto alla Crema di Pasta Madre",
+      "description": "Lievitazione lenta di 48 ore, crema pasticcera alla vaniglia bourbon e glassa alle mandorle siciliane tostate.",
+      "price": 2.8,
+      "category": "Lievitati",
+      "imageUrl": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=900&q=80&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=900&q=80&auto=format&fit=crop"
+      ],
+      "allergens": [
+        "glutine",
+        "latte",
+        "uova",
+        "frutta a guscio"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "torta-fondente",
+      "title": "Torta al Cioccolato Fondente 70%",
+      "description": "Pan di Spagna al cacao, cuore morbido al gianduia e glassa a specchio; disponibile anche senza glutine.",
+      "price": 28,
+      "category": "Torte",
+      "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=80&auto=format&fit=crop",
+      "images": [
+        "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=900&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80&auto=format&fit=crop"
+      ],
+      "allergens": [
+        "glutine",
+        "latte",
+        "uova",
+        "frutta a guscio"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "crostata-frutta",
+      "title": "Crostata di Frutta di Stagione",
+      "description": "Frolla sabbiata al burro, crema diplomatica e frutta fresca selezionata ogni mattina al mercato.",
+      "price": 24,
+      "category": "Torte",
+      "imageUrl": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=900&q=80&auto=format&fit=crop",
+      "allergens": [
+        "glutine",
+        "latte",
+        "uova"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "biscotti-assortiti",
+      "title": "Biscotti Assortiti da 500 g",
+      "description": "Cannestrelli, brutti ma buoni e frollini al limone di Sorrento, in elegante confezione regalo.",
+      "price": 18,
+      "category": "Biscotti",
+      "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900&q=80&auto=format&fit=crop",
+      "allergens": [
+        "glutine",
+        "latte",
+        "uova",
+        "frutta a guscio"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "pane-madre",
+      "title": "Pane di Pasta Madre",
+      "description": "Grano tenero tipo 1, 24 ore di maturazione e crosta croccante; tagliato a mano ogni giorno.",
+      "price": 4.5,
+      "category": "Panificazione",
+      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80&auto=format&fit=crop",
+      "allergens": [
+        "glutine"
+      ],
+      "glutenFree": false,
+      "vegan": true,
+      "available": true
+    },
+    {
+      "id": "cappuccino-arte",
+      "title": "Cappuccino con Latte Art",
+      "description": "Miscela artigianale tostata su licenza, estrazione da 25 secondi e latte fresco di alta montagna.",
+      "price": 2.2,
+      "category": "Caffetteria",
+      "imageUrl": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80&auto=format&fit=crop",
+      "allergens": [
+        "latte"
+      ],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    }
+  ]
+}

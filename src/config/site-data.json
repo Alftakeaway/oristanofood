@@ -1,0 +1,445 @@
+{
+  "businessInfo": {
+    "name": "Osteria Fenicio",
+    "tagline": "Ristorante Pizzeria · Cucina sarda dal 1962",
+    "type": "pizzeria",
+    "cuisine": ["Pizza", "Cucina sarda", "Pesce"],
+    "logo": "/logo.svg",
+    "description": "Osteria e pizzeria nel centro di Oristano: pasta di semola tirata ogni mattina, pesce del mercato di Torre Grande, pizza a lunga maturazione cotta nel forno a legna a 450 °C. Due sale e un dehors sul retro per pranzi di lavoro, cene e occasioni in famiglia.",
+    "address": {
+      "street": "Via Eleonora d'Arborea 45",
+      "city": "Oristano",
+      "zip": "09170",
+      "country": "Italia"
+    },
+    "geo": {
+      "lat": 39.9074,
+      "lng": 0.8782
+    },
+    "phone": "+39 0783 123456",
+    "whatsapp": "https://wa.me/390783123456",
+    "timezone": "Europe/Rome"
+  },
+  "styles": {
+    "colors": {
+      "primary": "#7A2E1D",
+      "secondary": "#2F4A3C",
+      "accent": "#D9A441",
+      "background": "#FBF7F0",
+      "surface": "#FFFFFF",
+      "foreground": "#221A16",
+      "muted": "#7A6C62"
+    },
+    "fonts": {
+      "heading": "Playfair Display",
+      "body": "Inter"
+    }
+  },
+  "hours": {
+    "monday": { "isOpen": false, "slots": [] },
+    "tuesday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "12:30", "close": "15:00" },
+        { "open": "19:30", "close": "23:30" }
+      ]
+    },
+    "wednesday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "12:30", "close": "15:00" },
+        { "open": "19:30", "close": "23:30" }
+      ]
+    },
+    "thursday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "12:30", "close": "15:00" },
+        { "open": "19:30", "close": "23:30" }
+      ]
+    },
+    "friday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "12:30", "close": "15:00" },
+        { "open": "19:30", "close": "00:00" }
+      ]
+    },
+    "saturday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "19:00", "close": "00:00" }
+      ]
+    },
+    "sunday": {
+      "isOpen": true,
+      "slots": [
+        { "open": "12:30", "close": "15:30" }
+      ]
+    }
+  },
+  "exceptions": [
+    { "date": "2026-11-02", "isOpen": false, "note": "Chiuso per Ognissanti" },
+    {
+      "date": "2026-12-24",
+      "isOpen": true,
+      "slots": [{ "open": "19:00", "close": "23:00" }],
+      "note": "Vigilia: solo cena, menù della festa su prenotazione"
+    },
+    { "date": "2026-12-25", "isOpen": false, "note": "Chiuso per Natale" },
+    {
+      "date": "2026-08-15",
+      "isOpen": true,
+      "slots": [{ "open": "19:00", "close": "00:00" }],
+      "note": "Ferragosto: servizio serale con musica dal vivo"
+    }
+  ],
+  "sections": {
+    "menu": true,
+    "pizza": true,
+    "booking": true,
+    "services": true,
+    "wine": true,
+    "allergens": true,
+    "showcase": true
+  },
+  "courses": [
+    { "category": "Antipasti", "note": "Taglieri tagliati al momento, pane guttiau scaldato nel forno a legna." },
+    { "category": "Primi", "note": "Semola di grano sardo, pasta tirata a mano ogni mattina." },
+    { "category": "Secondi", "note": "Pesce acquistato al mercato di Torre Grande, carne dei pastori del Barbagìa." },
+    { "category": "Dolci", "note": "Dolci della casa, miele di corbezzolo e liquori artigianali." }
+  ],
+  "pizza": {
+    "categories": ["Pizze Classiche", "Pizze Speciali"],
+    "doughNote": "Impasto diretto con lievito madre, 48 ore di maturazione e farina tipo 2 macinata a pietra. Cornicione alveolato, cottura in forno a legna a 450 °C.",
+    "styles": [
+      { "name": "Tonda napoletana", "description": "Diametro 32 cm, cornicione alto e morbida al morso." },
+      { "name": "Bassa romana", "description": "Stesa sottile e croccante, diametro 30 cm." },
+      { "name": "Al taglio", "description": "Vaschetta del giorno a pranzo, venduta al peso." }
+    ],
+    "extras": [
+      { "name": "Mozzarella di bufala D.O.P. extra", "price": 3 },
+      { "name": "Gambero rosso di Mazara", "price": 5 },
+      { "name": "Bottarga di muggine", "price": 4 },
+      { "name": "Uovo di quaglia", "price": 1.5 },
+      { "name": "Impasto senza glutine", "price": 2 }
+    ],
+    "note": "Per i celiaci usiamo banco, teglia e forno dedicati: la sovraprezzo copre l'impasto senza glutine."
+  },
+  "booking": {
+    "maxParty": 12,
+    "advanceDays": 21,
+    "stepMinutes": 30,
+    "phoneFallback": true,
+    "note": "La richiesta arriva in chat e la conferma parte dal locale, di norma entro pochi minuti durante il servizio."
+  },
+  "services": [
+    { "label": "Asporto", "note": "Componi l'ordine dal menù e ritira all'orario che preferisci." },
+    { "label": "Consegna a Oristano", "note": "Gratuita sopra 25 €, 3 € sotto. Centro, Torrenova, Donigama e Santa Severa." },
+    { "label": "Pranzo di lavoro", "note": "Menù fisso dal martedì al venerdì: primo, secondo, acqua e caffè a 11,50 €." },
+    { "label": "Happy hour 18:00–20:00", "note": "Tagliere piccolo e stuzzichini con calice di Vermentino a 9 €." },
+    { "label": "Eventi e banchetti", "note": "Sala da 30 coperti e dehors da 24: compleanni, cresime, cene aziendali." },
+    { "label": "Senza glutine", "note": "Impasto e banco dedicati, 2 pizze e 1 dolce certificati in carta." },
+    { "label": "Bambini", "note": "Menù ridotto 8 €, seggioloni e angolo giochi nel dehors." },
+    { "label": "Animali benvenuti", "note": "Ciotole e acqua nel dehors, cani di ogni taglia." },
+    { "label": "Pagamenti", "note": "Contanti, bancomat, carte e Satispay. Coperto 2,00 € a persona." }
+  ],
+  "wine": {
+    "note": "Lista in rotazione: chiedi al personale le referenze del giorno e i vini della casa sfusi.",
+    "groups": [
+      {
+        "label": "Bollicine",
+        "items": [
+          { "name": "Metodo Classico Alta Langa Brut", "producer": "Millesimato, 36 mesi sui lieviti", "glass": 8, "bottle": 42 }
+        ]
+      },
+      {
+        "label": "Bianchi",
+        "items": [
+          { "name": "Vermentino di Gallura Superiore", "producer": "Tenuta Podda, 2024", "glass": 6, "bottle": 28 },
+          { "name": "Cataratto di Sicilia", "producer": "IGT Terre Siciliane, 2023", "glass": 7, "bottle": 34 },
+          { "name": "Bianco della casa", "producer": "Carignano bianco sfuso della cantina", "glass": 5 }
+        ]
+      },
+      {
+        "label": "Rossi",
+        "items": [
+          { "name": "Cannonau di Jerzu Classico", "producer": "Cantina dei Colli, 2022", "glass": 6, "bottle": 30 },
+          { "name": "Carignano del Sulcis Rosso", "producer": "Cantina del Sulcis, 2021", "glass": 7, "bottle": 36 }
+        ]
+      },
+      {
+        "label": "Birre",
+        "items": [
+          { "name": "Ichnusa Non Filtrata", "glass": 5 },
+          { "name": "La Nuova Arsa, amber ale", "producer": "Microbirrificio di Decimomannu", "glass": 6 }
+        ]
+      },
+      {
+        "label": "Senza alcol",
+        "items": [
+          { "name": "Succo di melagrana", "glass": 4 },
+          { "name": "Chinotto artigianale", "glass": 3.5 },
+          { "name": "Acqua microfiltrata del rubinetto", "glass": 1.5 }
+        ]
+      }
+    ]
+  },
+  "showcase": [
+    {
+      "id": "tagliere-di-mare",
+      "title": "Tagliere di Mare Sardo",
+      "description": "Tagliere del giorno con pesce crudo, marinato di spada e scaglie di bottarga, pane guttiau caldo.",
+      "price": 18,
+      "category": "Antipasti",
+      "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop",
+      "images": ["https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop"],
+      "ingredients": ["pesce spada", "bottarga", "gamberi crudi", "pane guttiau"],
+      "allergens": ["pesce", "crostacei", "molluschi", "glutine"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "carciofi-alla-sarda",
+      "title": "Carciofi alla Sarda con Bottarga",
+      "description": "Carciofi spinosi di Sardegna D.O.P. in umido con aglio, prezzemolo e bottarga di muggine.",
+      "price": 12,
+      "category": "Antipasti",
+      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["carciofi", "bottarga", "aglio", "prezzemolo", "olio EVO"],
+      "allergens": ["pesce", "sedano"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "datterini-bocconchini",
+      "title": "Datterini e Bocconchini Scaldati",
+      "description": "Pomodorini confit del Campidano, bocconcini di bufala del Campidano e basilico dell'orto.",
+      "price": 9.5,
+      "category": "Antipasti",
+      "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["datterini", "bocconcini", "basilico"],
+      "allergens": ["latte"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "fregola-frutti-di-mare",
+      "title": "Fregola ai Frutti di Mare",
+      "description": "Fregola tostata, vongole veraci, cozze e gamberi con fumetto di pesce e bottarga.",
+      "price": 16,
+      "category": "Primi",
+      "imageUrl": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=900&q=80&auto=format&fit=crop",
+      "images": ["https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=900&q=80&auto=format&fit=crop"],
+      "ingredients": ["fregola", "vongole", "cozze", "gamberi", "bottarga"],
+      "allergens": ["glutine", "molluschi", "crostacei", "pesce"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "malloreddus-campidanese",
+      "title": "Malloreddus alla Campidanese",
+      "description": "Gnocchetti di semola con ragù di salsiccia sarda, zafferano di San Gavino e grattugiato di pecorino.",
+      "price": 13,
+      "category": "Primi",
+      "imageUrl": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["semola", "salsiccia di maiale", "zafferano", "pecorino"],
+      "allergens": ["glutine", "latte"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "lorighittas-ragu-agnello",
+      "title": "Lorighittas al Ragù di Agnello",
+      "description": "Anelli di pasta di Marrubiu fatti a mano con agnello di Barbagia, pomodorini e menta.",
+      "price": 15,
+      "category": "Primi",
+      "imageUrl": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["lorighittas", "agnello", "pomodorini", "menta"],
+      "allergens": ["glutine", "uova", "sedano"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "grigliata-di-pesce",
+      "title": "Grigliata di Pesce del Mercato",
+      "description": "Orata, spigola e gamberoni del mercato di Torre Grande, grigliati con limone di Sciacca ed erbe del nostro orto.",
+      "price": 24,
+      "category": "Secondi",
+      "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop",
+      "images": ["https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop"],
+      "ingredients": ["orata", "spigola", "gamberoni", "limone"],
+      "allergens": ["pesce", "crostacei"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "maialetto-cannonau",
+      "title": "Maialetto Sfumato al Cannonau",
+      "description": "Costine di maialetto marinate e arrostite a bassa temperatura, sfumate al Cannonau con patate novelle al rosmarino.",
+      "price": 19,
+      "category": "Secondi",
+      "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["maialetto", "Cannonau", "patate novelle", "rosmarino"],
+      "allergens": ["solfiti", "senape"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "fritto-misto-di-mare",
+      "title": "Fritto Misto di Mare",
+      "description": "Calamari, gamberi e pesciolini in pastella leggera, con lime e prezzemolo fritto.",
+      "price": 18,
+      "category": "Secondi",
+      "imageUrl": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["calamari", "gamberi", "pesciolini", "pastella"],
+      "allergens": ["molluschi", "crostacei", "pesce", "glutine"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": false
+    },
+    {
+      "id": "seadas-miele",
+      "title": "Seadas con Miele di Corbezzolo",
+      "description": "Ravioloni di pecorino fresco fritti, miele amaro di corbezzolo e zeste di limone.",
+      "price": 7,
+      "category": "Dolci",
+      "imageUrl": "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["pasta all'uovo", "pecorino fresco", "miele di corbezzolo"],
+      "allergens": ["glutine", "uova", "latte"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "torta-mandorle-arancia",
+      "title": "Torta di Mandorle e Arancia",
+      "description": "Soffice alle mandorle di Sardegna e scorza d'arancia, senza farina: naturalmente senza glutine.",
+      "price": 6,
+      "category": "Dolci",
+      "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["mandorle", "uova", "arancia", "zucchero"],
+      "allergens": ["frutta a guscio", "uova", "latte"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "panna-cotta-mirto",
+      "title": "Panna Cotta al Mirto",
+      "description": "Panna cotta alla vaniglia con gelée di mirto di Sardegna e briciole di biscotti secchi.",
+      "price": 6,
+      "category": "Dolci",
+      "imageUrl": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["panna", "mirto", "gelatina", "biscotti"],
+      "allergens": ["latte", "glutine"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "margherita Dop",
+      "title": "Margherita D.O.P.",
+      "description": "Fior di latte di Agerola D.O.P., pomodoro San Marzano, basilico e olio EVO.",
+      "price": 7.5,
+      "category": "Pizze Classiche",
+      "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=80&auto=format&fit=crop",
+      "images": ["https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80&auto=format&fit=crop"],
+      "ingredients": ["fior di latte D.O.P.", "San Marzano", "basilico", "olio EVO"],
+      "allergens": ["glutine", "latte"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "marinara",
+      "title": "Marinara",
+      "description": "La pizza senza formaggio: pomodoro, aglio in camicia, origano e olio EVO. Vegana.",
+      "price": 6,
+      "category": "Pizze Classiche",
+      "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["pomodoro", "aglio", "origano", "olio EVO"],
+      "allergens": ["glutine"],
+      "glutenFree": false,
+      "vegan": true,
+      "available": true
+    },
+    {
+      "id": "pizza-sarda",
+      "title": "Pizza Sarda",
+      "description": "Crema di carciofi, pecorino sardo, scaglie di bottarga di muggine e olio a crudo.",
+      "price": 11,
+      "category": "Pizze Classiche",
+      "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["carciofi", "pecorino", "bottarga"],
+      "allergens": ["glutine", "latte", "pesce"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "diavola",
+      "title": "Diavola",
+      "description": "Fior di latte, salame piccante calabro e pomodoro, con un filo di olio al peperoncino.",
+      "price": 9,
+      "category": "Pizze Classiche",
+      "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["fior di latte", "salame piccante", "pomodoro"],
+      "allergens": ["glutine", "latte"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "fenicia-gambero-rosso",
+      "title": "Fenicia al Gambero Rosso",
+      "description": "Base bianca, burrata, gambero rosso di Mazara e bottarga; esce dal forno con lime grattugiato.",
+      "price": 14,
+      "category": "Pizze Speciali",
+      "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["burrata", "gambero rosso", "bottarga", "lime"],
+      "allergens": ["glutine", "latte", "crostacei", "pesce"],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "quattro-formaggi-sg",
+      "title": "Quattro Formaggi Senza Glutine",
+      "description": "Impasto dedicato GF, gorgonzola, pecorino, mozzarella e ricotta infornata.",
+      "price": 11,
+      "category": "Pizze Speciali",
+      "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["gorgonzola", "pecorino", "mozzarella", "ricotta"],
+      "allergens": ["latte", "uova"],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true
+    },
+    {
+      "id": "ortolana-vegana",
+      "title": "Ortolana Vegana",
+      "description": "Verdure di stagione grigliate, pomodorini confit, crema di cannellini e origano.",
+      "price": 10,
+      "category": "Pizze Speciali",
+      "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=80&auto=format&fit=crop",
+      "ingredients": ["zucchine", "melanzane", "peperoni", "cannellini", "pomodorini"],
+      "allergens": ["glutine", "sedano"],
+      "glutenFree": false,
+      "vegan": true,
+      "available": true
+    }
+  ]
+}
