@@ -172,11 +172,15 @@ const readSiteData = unstable_cache(
     } catch {
       // Token assente o API irraggiungibile: file locale (fail-open).
     }
+    let raw: unknown;
     try {
-      return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
+      raw = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as unknown;
     } catch {
-      return fallbackData as unknown as SiteData;
+      raw = fallbackData as unknown;
     }
+    const { parseSiteData } = await import('./site-schema');
+    // Dato rotto = build fallita con messaggio leggibile, non crash a runtime.
+    return parseSiteData(raw, 'site-data.json') as SiteData;
   },
   ['site-data-read'],
   { tags: ['site-data'] },

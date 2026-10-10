@@ -32,9 +32,9 @@ export async function loadRemote(): Promise<SiteData | null> {
     if (!res.ok) return null;
     const body = (await res.json()) as { content?: string; encoding?: string };
     if (body.encoding !== 'base64' || !body.content) return null;
-    const data = JSON.parse(Buffer.from(body.content, 'base64').toString('utf8')) as SiteData;
-    if (!data || !Array.isArray(data.showcase)) return null;
-    return data;
+    const data = JSON.parse(Buffer.from(body.content, 'base64').toString('utf8')) as unknown;
+    const { safeSiteData } = await import('./site-schema');
+    return safeSiteData(data, 'site-data.json remoto');
   } catch (error) {
     console.error('[github-store] lettura remota fallita, uso file locale:', error);
     return null;
