@@ -53,7 +53,7 @@ export default function ShowcaseGrid({
                 {group.items.map((item) => (
                   <article
                     key={item.id}
-                    className="group overflow-hidden rounded-2xl border border-foreground/5 bg-surface shadow-sm transition hover:shadow-md"
+                    className="group flex flex-col overflow-hidden rounded-2xl border border-foreground/5 bg-surface shadow-sm transition hover:shadow-md"
                   >
                     <ProductGallery
                       title={item.title}
@@ -62,7 +62,7 @@ export default function ShowcaseGrid({
                       price={item.price}
                       available={item.available}
                     />
-                    <div className={item.available ? 'p-5' : 'p-5 opacity-70'}>
+                    <div className={`flex flex-1 flex-col p-5 ${item.available ? '' : 'opacity-70'}`}>
                       <h3 className="font-heading text-xl">{item.title}</h3>
                       <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
                         {item.description}
@@ -93,7 +93,7 @@ export default function ShowcaseGrid({
                           ))}
                         </ul>
                       )}
-                      <div className="mt-4">
+                      <div className="mt-auto pt-4">
                         <AddToCartButton
                           item={{
                             id: item.id,
