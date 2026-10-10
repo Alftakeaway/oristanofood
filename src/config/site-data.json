@@ -377,7 +377,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": true
     },
     {
       "id": "carciofi-alla-sarda",
@@ -399,7 +400,8 @@
       ],
       "glutenFree": true,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": true
     },
     {
       "id": "datterini-bocconchini",
@@ -418,7 +420,8 @@
       ],
       "glutenFree": true,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "fregola-frutti-di-mare",
@@ -467,7 +470,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "lorighittas-ragu-agnello",
@@ -489,7 +493,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "grigliata-di-pesce",
@@ -535,7 +540,8 @@
       ],
       "glutenFree": true,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": true
     },
     {
       "id": "fritto-misto-di-mare",
@@ -558,7 +564,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": false
+      "available": false,
+      "feature": false
     },
     {
       "id": "seadas-miele",
@@ -602,7 +609,8 @@
       ],
       "glutenFree": true,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "panna-cotta-mirto",
@@ -623,7 +631,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "margherita Dop",
@@ -647,7 +656,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": true
     },
     {
       "id": "marinara",
@@ -667,7 +677,8 @@
       ],
       "glutenFree": false,
       "vegan": true,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "pizza-sarda",
@@ -709,7 +720,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "fenicia-gambero-rosso",
@@ -732,7 +744,8 @@
       ],
       "glutenFree": false,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": true
     },
     {
       "id": "quattro-formaggi-sg",
@@ -753,7 +766,8 @@
       ],
       "glutenFree": true,
       "vegan": false,
-      "available": true
+      "available": true,
+      "feature": false
     },
     {
       "id": "ortolana-vegana",
@@ -775,7 +789,280 @@
       ],
       "glutenFree": false,
       "vegan": true,
-      "available": true
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "burrata-prosciutto-villagrande",
+      "title": "Burrata e Prosciutto di Villagrande",
+      "description": "Burrata cremosa con prosciutto crudo di Villagrande, rucola e pane carasau.",
+      "price": 11,
+      "category": "Antipasti",
+      "imageUrl": "/placeholders/antipasti.svg",
+      "images": [
+        "/placeholders/antipasti.svg"
+      ],
+      "ingredients": [
+        "burrata",
+        "prosciutto crudo",
+        "rucola",
+        "pane carasau"
+      ],
+      "allergens": [
+        "latte",
+        "glutine"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "cozze-marinara-crostoni",
+      "title": "Cozze alla Marinara con Crostoni",
+      "description": "Cozze del Golfo di Oristano al pomodoro e prezzemolo, crostoni all'aglio.",
+      "price": 10,
+      "category": "Antipasti",
+      "imageUrl": "/placeholders/antipasti.svg",
+      "images": [
+        "/placeholders/antipasti.svg"
+      ],
+      "ingredients": [
+        "cozze",
+        "pomodoro",
+        "aglio",
+        "prezzemolo"
+      ],
+      "allergens": [
+        "molluschi",
+        "glutine"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "culurgiones-sugo-pecorino",
+      "title": "Culurgiones al Sugo e Pecorino",
+      "description": "Ravioli ogliastrini di patate e menta al sugo di pomodoro con pecorino fuso.",
+      "price": 14,
+      "category": "Primi",
+      "imageUrl": "/placeholders/primi.svg",
+      "images": [
+        "/placeholders/primi.svg"
+      ],
+      "ingredients": [
+        "culurgiones",
+        "pomodoro",
+        "pecorino",
+        "menta"
+      ],
+      "allergens": [
+        "glutine",
+        "latte",
+        "uova"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "spaghetti-ricci-di-mare",
+      "title": "Spaghetti ai Ricci di Mare",
+      "description": "Spaghetti con polpa di ricci di mare, aglio, olio e limone di Sinnai.",
+      "price": 17,
+      "category": "Primi",
+      "imageUrl": "/placeholders/primi.svg",
+      "images": [
+        "/placeholders/primi.svg"
+      ],
+      "ingredients": [
+        "spaghetti",
+        "ricci di mare",
+        "aglio",
+        "limone"
+      ],
+      "allergens": [
+        "glutine",
+        "molluschi"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "orata-isolana-forno",
+      "title": "Orata all'Isolana al Forno",
+      "description": "Orata intera al forno con patate, olive e pomodorini, olio EVO sardo.",
+      "price": 21,
+      "category": "Secondi",
+      "imageUrl": "/placeholders/secondi.svg",
+      "images": [
+        "/placeholders/secondi.svg"
+      ],
+      "ingredients": [
+        "orata",
+        "patate",
+        "olive",
+        "pomodorini"
+      ],
+      "allergens": [
+        "pesce"
+      ],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "agnello-agrodolce-carciofi",
+      "title": "Agnello in Agrodolce con Carciofi",
+      "description": "Bocconcini di agnello in agrodolce con carciofi di stagione e mirto.",
+      "price": 20,
+      "category": "Secondi",
+      "imageUrl": "/placeholders/secondi.svg",
+      "images": [
+        "/placeholders/secondi.svg"
+      ],
+      "ingredients": [
+        "agnello",
+        "carciofi",
+        "aceto",
+        "mirto"
+      ],
+      "allergens": [],
+      "glutenFree": true,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "tiramisu-ogliastra",
+      "title": "Tiramisù al Caffè dell'Ogliastra",
+      "description": "Tiramisù classico con caffè tostato in Ogliastra e cacao amaro.",
+      "price": 6.5,
+      "category": "Dolci",
+      "imageUrl": "/placeholders/dolci.svg",
+      "images": [
+        "/placeholders/dolci.svg"
+      ],
+      "ingredients": [
+        "mascarpone",
+        "caffè",
+        "savoiardi",
+        "cacao"
+      ],
+      "allergens": [
+        "latte",
+        "uova",
+        "glutine"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": true
+    },
+    {
+      "id": "sorbetto-limone-sinnai",
+      "title": "Sorbetto al Limone di Sinnai",
+      "description": "Sorbetto fresco al limone di Sinnai, servito nella coppetta ghiacciata.",
+      "price": 5,
+      "category": "Dolci",
+      "imageUrl": "/placeholders/dolci.svg",
+      "images": [
+        "/placeholders/dolci.svg"
+      ],
+      "ingredients": [
+        "limone",
+        "zucchero",
+        "acqua"
+      ],
+      "allergens": [],
+      "glutenFree": true,
+      "vegan": true,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "capricciosa",
+      "title": "Capricciosa",
+      "description": "Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi e olive.",
+      "price": 9.5,
+      "category": "Pizze Classiche",
+      "imageUrl": "/placeholders/pizza.svg",
+      "images": [
+        "/placeholders/pizza.svg"
+      ],
+      "ingredients": [
+        "pomodoro",
+        "mozzarella",
+        "prosciutto cotto",
+        "funghi",
+        "carciofi",
+        "olive"
+      ],
+      "allergens": [
+        "glutine",
+        "latte"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "tonno-cipolla-tropea",
+      "title": "Tonno e Cipolla di Tropea",
+      "description": "Tonno all'olio EVO, cipolla di Tropea caramellata e olive taggiasche.",
+      "price": 12,
+      "category": "Pizze Speciali",
+      "imageUrl": "/placeholders/pizza.svg",
+      "images": [
+        "/placeholders/pizza.svg"
+      ],
+      "ingredients": [
+        "tonno",
+        "cipolla di Tropea",
+        "olive taggiasche",
+        "mozzarella"
+      ],
+      "allergens": [
+        "glutine",
+        "latte",
+        "pesce"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
+    },
+    {
+      "id": "bufalina-rucola-pachino",
+      "title": "Bufalina con Rucola e Pachino",
+      "description": "Bufala campana, rucola fresca, pachino e riduzione di aceto balsamico.",
+      "price": 12.5,
+      "category": "Pizze Speciali",
+      "imageUrl": "/placeholders/pizza.svg",
+      "images": [
+        "/placeholders/pizza.svg"
+      ],
+      "ingredients": [
+        "bufala",
+        "rucola",
+        "pomodorini pachino",
+        "balsamico"
+      ],
+      "allergens": [
+        "glutine",
+        "latte"
+      ],
+      "glutenFree": false,
+      "vegan": false,
+      "available": true,
+      "feature": false
     }
   ]
 }
