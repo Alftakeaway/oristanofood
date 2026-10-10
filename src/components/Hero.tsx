@@ -40,7 +40,7 @@ export default function Hero({ data }: HeroProps) {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href={getPhoneHref(businessInfo.phone)}
-            className="w-full rounded-full bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] sm:w-auto"
+            className="w-full rounded-full bg-primary px-8 py-4 text-lg font-semibold whitespace-nowrap text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] sm:w-auto"
           >
             Chiama Ora
           </a>

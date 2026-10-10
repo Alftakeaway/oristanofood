@@ -60,7 +60,7 @@ export default function Header({ businessInfo, status, sections }: HeaderProps) 
           <OpenStatusBadge initial={status} />
           <a
             href={getPhoneHref(businessInfo.phone)}
-            className="rounded-full bg-primary px-4 py-2 text-xs font-semibold text-white transition hover:brightness-110 sm:px-5 sm:py-2 sm:text-sm"
+            className="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-semibold whitespace-nowrap text-white transition hover:brightness-110 sm:px-5 sm:py-2 sm:text-sm"
           >
             <span className="sm:hidden">Chiama</span>
             <span className="hidden sm:inline">Chiama Ora</span>
