@@ -164,23 +164,19 @@ const DATA_PATH = path.join(process.cwd(), 'src', 'config', 'site-data.json');
 
 const readSiteData = unstable_cache(
   async (): Promise<SiteData> => {
-    let base: SiteData;
+    // Produzione: il repo GitHub è la fonte (sempre aggiornato dai commit webhook).
     try {
-      base = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
+      const { loadRemote } = await import('./github-store');
+      const remote = await loadRemote();
+      if (remote) return remote;
     } catch {
-      base = fallbackData as unknown as SiteData;
+      // Token assente o API irraggiungibile: file locale (fail-open).
     }
-    // Override runtime (WhatsApp → Redis): se presenti, sostituiscono le liste base.
     try {
-      const { loadOverrides } = await import('./overrides-store');
-      const overrides = await loadOverrides();
-      if (overrides) {
-        return { ...base, showcase: overrides.showcase, exceptions: overrides.exceptions };
-      }
+      return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')) as SiteData;
     } catch {
-      // Redis non configurato o irraggiungibile: vale la base (fail-open).
+      return fallbackData as unknown as SiteData;
     }
-    return base;
   },
   ['site-data-read'],
   { tags: ['site-data'] },

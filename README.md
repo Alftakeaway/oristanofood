@@ -22,11 +22,14 @@ Esempio alternativo: `src/config/presets/pasticceria.example.json`.
 - **WhatsApp**: prenotazioni via `BookingSection` + webhook `api/webhook/whatsapp`.
   Variabili in `.env.local` (mai committare): `WHATSAPP_VERIFY_TOKEN`,
   `WHATSAPP_WEBHOOK_SECRET`, `WHATSAPP_ALLOWED_NUMBERS`.
-- **Persistenza override** (prezzi/disponibilità/eccezioni via WhatsApp):
-  Redis Upstash free ($0, senza carta) via `UPSTASH_REDIS_REST_URL` +
-  `UPSTASH_REDIS_REST_TOKEN` (vedi https://upstash.com/pricing).
-  Senza queste env: in locale scrive su file, in produzione la scrittura
-  è bloccata con errore chiaro (il filesystem Vercel è effimero).
+- **Persistenza modifiche** (prezzi/disponibilità/eccezioni via WhatsApp):
+  il webhook fa **commit diretto di `site-data.json` nel repo GitHub**
+  (`src/lib/github-store.ts`) — niente servizi esterni, niente redeploy
+  (le letture vengono dal repo via API). Serve un token con permessi
+  `contents:write` su questo repo in `GITHUB_TOKEN` (`.env.local`, mai
+  committare; stessa var su Vercel). Senza token: in locale scrive su file,
+  in produzione la scrittura è bloccata con errore chiaro (il filesystem
+  Vercel è effimero).
 - **Stato apertura**: `api/open-status` da orari + eccezioni in `site-data.json`.
 - **Persistenza**: `src/lib/kv-store.ts` per stato/prenotazioni.
 

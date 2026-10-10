@@ -5,7 +5,7 @@ import {
   type ShowcaseItem,
   type SiteData,
 } from './site-data';
-import { isRedisConfigured, saveOverrides } from './overrides-store';
+import { isGitHubConfigured, saveRemote } from './github-store';
 import type { HourException } from './open-status';
 
 const DATA_PATH = path.join(process.cwd(), 'src', 'config', 'site-data.json');
@@ -82,7 +82,7 @@ export async function upsertShowcaseItem(input: {
   } else {
     data.showcase.push(item);
   }
-  await persist(data);
+  await persist(data, `WhatsApp: scheda "${item.title}" aggiornata`);
   return { data, item };
 }
 
@@ -93,7 +93,7 @@ export async function setAvailability(
   const data = structuredClone(await loadData());
   const item = singleMatch(data.showcase, title);
   item.available = available;
-  await persist(data);
+  await persist(data, `WhatsApp: "${item.title}" ${available ? 'disponibile' : 'esaurito'}`);
   return { data, item };
 }
 
@@ -104,7 +104,7 @@ export async function updatePrice(
   const data = structuredClone(await loadData());
   const item = singleMatch(data.showcase, title);
   item.price = price;
-  await persist(data);
+  await persist(data, `WhatsApp: prezzo "${item.title}" €${price}`);
   return { data, item };
 }
 
@@ -120,31 +120,31 @@ export async function setException(
   } else {
     data.exceptions.push(next);
   }
-  await persist(data);
+  await persist(data, `WhatsApp: orari ${date} ${exception.isOpen ? 'apertura straord.' : 'chiuso'}`);
   return data;
 }
 
 export async function removeException(date: string): Promise<SiteData> {
   const data = structuredClone(await loadData());
   data.exceptions = data.exceptions.filter((e) => e.date !== date);
-  await persist(data);
+  await persist(data, `WhatsApp: orari ${date} ripristinati`);
   return data;
 }
 
-async function persist(data: SiteData): Promise<void> {
-  // Produzione: Redis (filesystem Vercel è effimero). Sviluppo: file.
-  if (isRedisConfigured()) {
-    const ok = await saveOverrides(data);
+async function persist(data: SiteData, message: string): Promise<void> {
+  // Produzione: commit nel repo (niente servizi esterni). Sviluppo: file.
+  if (isGitHubConfigured()) {
+    const ok = await saveRemote(data, message);
     if (!ok) {
-      throw new Error('Persistenza Redis fallita (vedi log [overrides])');
+      throw new Error('Commit GitHub fallito (vedi log [github-store])');
     }
     return;
   }
   if (process.env.VERCEL) {
     // Configurazione mancante in produzione: meglio un errore chiaro che una
-    // scrittura silenziosamente persa.
+    // scrittura silenziosamente persa (filesystem Vercel è effimero).
     throw new Error(
-      'UPSTASH_REDIS_REST_URL/TOKEN mancanti: gli aggiornamenti andrebbero persi, scrittura bloccata.',
+      'GITHUB_TOKEN mancante: gli aggiornamenti andrebbero persi, scrittura bloccata.',
     );
   }
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n', 'utf8');
