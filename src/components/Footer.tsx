@@ -26,7 +26,7 @@ export default function Footer({ data }: FooterProps) {
           <p>
             © {new Date().getFullYear()} {businessInfo.name} · Tutti i diritti riservati
           </p>
-          <p>Sito autogestito · Aggiornato via WhatsApp</p>
+          <p className="flex gap-4"><a href="/privacy" className="underline underline-offset-2 hover:opacity-100">Privacy</a><span>Sito autogestito · Aggiornato via WhatsApp</span></p>
         </div>
       </div>
     </footer>

@@ -44,6 +44,7 @@ export default function BookingSection({
   const [party, setParty] = useState(2);
   const [name, setName] = useState('');
   const [notes, setNotes] = useState('');
+  const [privacyOk, setPrivacyOk] = useState(false);
 
   const availability = getDayAvailability(date, hours, exceptions);
   const timeOptions = getTimeOptions(availability.slots, stepMinutes);
@@ -176,17 +177,36 @@ export default function BookingSection({
                 {availability.note ?? 'Chiuso in questa data: scegli un giorno di apertura.'}
               </p>
             ) : (
-              <a
-                href={time ? href : undefined}
-                target={time ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                aria-disabled={!time}
-                className={`mt-5 block rounded-full px-6 py-3 text-center text-sm font-semibold text-white transition ${
-                  time ? 'bg-primary hover:brightness-110 active:scale-[0.98]' : 'pointer-events-none bg-primary/50'
-                }`}
-              >
-                Invia richiesta su WhatsApp
-              </a>
+              <>
+                <label className="mt-5 flex cursor-pointer items-start gap-2 text-xs leading-relaxed text-muted">
+                  <input
+                    type="checkbox"
+                    checked={privacyOk}
+                    onChange={(event) => setPrivacyOk(event.target.checked)}
+                    className="mt-0.5 accent-primary"
+                  />
+                  <span>
+                    Ho letto l&apos;
+                    <a href="/privacy" className="underline underline-offset-2">
+                      informativa privacy
+                    </a>{' '}
+                    e accetto che i dati della richiesta viaggino via WhatsApp.
+                  </span>
+                </label>
+                <a
+                  href={time && privacyOk ? href : undefined}
+                  target={time && privacyOk ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  aria-disabled={!time || !privacyOk}
+                  className={`mt-3 block rounded-full px-6 py-3 text-center text-sm font-semibold text-white transition ${
+                    time && privacyOk
+                      ? 'bg-primary hover:brightness-110 active:scale-[0.98]'
+                      : 'pointer-events-none bg-primary/50'
+                  }`}
+                >
+                  Invia richiesta su WhatsApp
+                </a>
+              </>
             )}
 
             {config.phoneFallback !== false && (
