@@ -17,6 +17,18 @@ Tutto il sito si configura da `src/config/site-data.json`
 (info attività, orari, sezioni, corsi, pizza, vini, booking, showcase).
 Esempio alternativo: `src/config/presets/pasticceria.example.json`.
 
+## Foto: segnaposto e foto vere
+
+- Di default il sito usa segnaposto SVG eleganti in `public/placeholders/`
+  (uno per categoria: antipasti, primi, secondi, dolci, pizza, vino + default).
+- Per mettere foto vere: salvale in `public/` (es. `public/tagliere.jpg`,
+  max 1600px lato lungo, JPEG q75-80, < 300 KB) e scrivi il percorso in
+  `site-data.json` (`imageUrl`, `images`). Niente hotlink esterni: il template
+  è local-first (la build fallisce su URL remoti non dichiarati in
+  `next.config.mjs`).
+- Prima di usare una foto pesante, crea una preview leggera per controllarla:
+  `pwsh -NoProfile -File C:\Users\Alfredo\.config\opencode\tools\imgpreview.ps1 -Path <file>`.
+
 ## Integrazioni
 
 - **WhatsApp**: prenotazioni via `BookingSection` + webhook `api/webhook/whatsapp`.

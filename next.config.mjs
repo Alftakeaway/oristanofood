@@ -4,10 +4,8 @@ const nextConfig = {
   outputFileTracingRoot: process.cwd(),
   images: {
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'res.cloudinary.com' },
-    ],
+    // Template local-first: le foto stanno in public/. Per CDN esterni
+    // aggiungere qui il dominio in remotePatterns (vedi README).
   },
 };
 

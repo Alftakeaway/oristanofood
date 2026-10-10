@@ -162,8 +162,7 @@ export function getSections(data: SiteData): SectionFlags {
 
 const DATA_PATH = path.join(process.cwd(), 'src', 'config', 'site-data.json');
 
-const readSiteData = unstable_cache(
-  async (): Promise<SiteData> => {
+const readSiteDataInner = async (): Promise<SiteData> => {
     // Produzione: il repo GitHub è la fonte (sempre aggiornato dai commit webhook).
     try {
       const { loadRemote } = await import('./github-store');
@@ -181,13 +180,25 @@ const readSiteData = unstable_cache(
     const { parseSiteData } = await import('./site-schema');
     // Dato rotto = build fallita con messaggio leggibile, non crash a runtime.
     return parseSiteData(raw, 'site-data.json') as SiteData;
-  },
-  ['site-data-read'],
-  { tags: ['site-data'] },
-);
+};
+
+// La Data Cache di Next persiste in .next/cache tra le build: con chiave
+// statica riuserebbe il JSON vecchio. La versione segue il file (mtime+size),
+// così ogni modifica invalida la cache; gli override remoti invalidano via tag.
+function dataVersion(): string {
+  try {
+    const st = fs.statSync(DATA_PATH);
+    return `${st.mtimeMs}-${st.size}`;
+  } catch {
+    return 'nofile';
+  }
+}
 
 export async function getSiteData(): Promise<SiteData> {
-  return readSiteData();
+  const cached = unstable_cache(readSiteDataInner, ['site-data-read', dataVersion()], {
+    tags: ['site-data'],
+  });
+  return cached();
 }
 
 export function formatAddress(address: BusinessAddress): string {
