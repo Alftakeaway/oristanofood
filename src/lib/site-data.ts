@@ -1,3 +1,4 @@
+import { DEMO_MODE } from "./demo-mode";
 import fs from 'node:fs';
 import path from 'node:path';
 import { unstable_cache } from 'next/cache';
@@ -167,7 +168,7 @@ const readSiteDataInner = async (): Promise<SiteData> => {
     // Produzione: il repo GitHub è la fonte (sempre aggiornato dai commit webhook).
     try {
       const { loadRemote } = await import('./github-store');
-      const remote = await loadRemote();
+      const remote = DEMO_MODE ? null : await loadRemote();
       if (remote) return remote;
     } catch {
       // Token assente o API irraggiungibile: file locale (fail-open).
@@ -202,20 +203,5 @@ export async function getSiteData(): Promise<SiteData> {
   return cached();
 }
 
-export function formatAddress(address: BusinessAddress): string {
-  return `${address.street}, ${address.zip} ${address.city}, ${address.country}`;
-}
-
-export function getPhoneHref(phone: string): string {
-  return `tel:${phone.replace(/[^+\d]/g, '')}`;
-}
-
-export function getDirectionsUrl(geo: GeoPoint): string {
-  return `https://www.google.com/maps/dir/?api=1&destination=${geo.lat},${geo.lng}`;
-}
-
-export function getMapsEmbedUrl(geo: GeoPoint): string {
-  return `https://www.google.com/maps?q=${geo.lat},${geo.lng}&z=16&output=embed`;
-}
-
-export { formatPrice, getWhatsAppHref } from './format';
+export { formatAddress, getPhoneHref, getDirectionsUrl, getMapsEmbedUrl } from "./site-utils";
+export { formatPrice, getWhatsAppHref } from "./format";

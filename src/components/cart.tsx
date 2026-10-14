@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   createContext,
@@ -6,11 +6,14 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
-} from 'react';
-import Image from 'next/image';
-import { formatPrice, getWhatsAppHref } from '@/lib/format';
+} from "react";
+import Image from "next/image";
+import { DEMO_MODE } from "@/lib/demo-mode";
+import { useDemo, useDemoConfig } from "@/components/demo/DemoProvider";
+import { formatPrice, getWhatsAppHref } from "@/lib/format";
 
 export interface CartEntry {
   id: string;
@@ -38,12 +41,36 @@ const CartContext = createContext<CartContextValue | null>(null);
 
 export function useCart(): CartContextValue {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error('useCart va usato dentro CartProvider');
+  if (!ctx) throw new Error("useCart va usato dentro CartProvider");
   return ctx;
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const config = useDemoConfig();
+  const { settings } = useDemo();
   const [lines, setLines] = useState<CartLine[]>([]);
+  useEffect(() => {
+    setLines((prev) =>
+      prev.flatMap((line) => {
+        const item = config.showcase.find(
+          (item) => item.id === line.id && item.available,
+        );
+        return item
+          ? [
+              {
+                ...line,
+                title: item.title,
+                price: item.price,
+                imageUrl: item.imageUrl,
+              },
+            ]
+          : [];
+      }),
+    );
+  }, [config]);
+  useEffect(() => {
+    setLines([]);
+  }, [settings.preset]);
   const [isOpen, setIsOpen] = useState(false);
 
   const add = useCallback((entry: CartEntry) => {
@@ -61,12 +88,20 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const setQty = useCallback((id: string, qty: number) => {
     setLines((prev) =>
-      qty <= 0 ? prev.filter((line) => line.id !== id) : prev.map((line) => (line.id === id ? { ...line, qty } : line)),
+      qty <= 0
+        ? prev.filter((line) => line.id !== id)
+        : prev.map((line) => (line.id === id ? { ...line, qty } : line)),
     );
   }, []);
 
-  const count = useMemo(() => lines.reduce((sum, line) => sum + line.qty, 0), [lines]);
-  const total = useMemo(() => lines.reduce((sum, line) => sum + line.qty * line.price, 0), [lines]);
+  const count = useMemo(
+    () => lines.reduce((sum, line) => sum + line.qty, 0),
+    [lines],
+  );
+  const total = useMemo(
+    () => lines.reduce((sum, line) => sum + line.qty * line.price, 0),
+    [lines],
+  );
 
   const value = useMemo<CartContextValue>(
     () => ({
@@ -87,10 +122,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 export function AddToCartButton({
   item,
-  variant = 'card',
+  variant = "card",
 }: {
   item: CartEntry & { available: boolean };
-  variant?: 'card' | 'row';
+  variant?: "card" | "row";
 }) {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
@@ -101,10 +136,12 @@ export function AddToCartButton({
     window.setTimeout(() => setAdded(false), 1600);
   };
 
-  if (variant === 'row') {
+  if (variant === "row") {
     if (!item.available) {
       return (
-        <span className="text-xs font-medium uppercase tracking-wide text-muted">Esaurito</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-muted">
+          Esaurito
+        </span>
       );
     }
     return (
@@ -114,7 +151,7 @@ export function AddToCartButton({
         aria-label={`Aggiungi ${item.title} all'ordine`}
         className="rounded-full border border-primary/30 px-3 py-1 text-xs font-semibold text-primary transition hover:bg-primary hover:text-white active:scale-[0.98]"
       >
-        {added ? '✓' : '+'}
+        {added ? "✓" : "+"}
       </button>
     );
   }
@@ -137,7 +174,7 @@ export function AddToCartButton({
       onClick={onAdd}
       className="w-full rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110 active:scale-[0.98]"
     >
-      {added ? 'Aggiunto ✓' : "Aggiungi all'ordine"}
+      {added ? "Aggiunto ✓" : "Aggiungi all'ordine"}
     </button>
   );
 }
@@ -149,25 +186,40 @@ export function CartWidget({
   whatsapp: string;
   pickupSlots: string[];
 }) {
-  const { lines, count, total, isOpen, openCart, closeCart, setQty } = useCart();
-  const [slot, setSlot] = useState('');
+  const { lines, count, total, isOpen, openCart, closeCart, setQty } =
+    useCart();
+  const [slot, setSlot] = useState("");
+  const { preview } = useDemo();
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    if (isOpen && !dialog.current?.open) dialog.current?.showModal();
+    else if (!isOpen && dialog.current?.open) dialog.current.close();
+  }, [isOpen]);
+  const selectedSlot = pickupSlots.includes(slot) ? slot : "";
 
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') closeCart();
+      if (event.key === "Escape") closeCart();
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, closeCart]);
 
   const message = useMemo(() => {
-    if (lines.length === 0) return '';
-    const rows = lines.map((line) => `• ${line.qty}× ${line.title} — ${formatPrice(line.qty * line.price)}`);
-    const parts = ['Ciao! Vorrei ordinare:', ...rows, `Totale: ${formatPrice(total)}`];
-    if (slot) parts.push(`Ritiro: ${slot}`);
-    return parts.join('\n');
-  }, [lines, total, slot]);
+    if (lines.length === 0) return "";
+    const rows = lines.map(
+      (line) =>
+        `• ${line.qty}× ${line.title} — ${formatPrice(line.qty * line.price)}`,
+    );
+    const parts = [
+      "Ciao! Vorrei ordinare:",
+      ...rows,
+      `Totale: ${formatPrice(total)}`,
+    ];
+    if (selectedSlot) parts.push(`Ritiro: ${selectedSlot}`);
+    return parts.join("\n");
+  }, [lines, total, selectedSlot]);
 
   return (
     <>
@@ -176,7 +228,7 @@ export function CartWidget({
         onClick={openCart}
         aria-label="Apri il carrello"
         className={`fixed bottom-5 left-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg transition hover:brightness-110 ${
-          count > 0 ? '' : 'hidden'
+          count > 0 ? "" : "hidden"
         }`}
       >
         <span className="relative">
@@ -203,11 +255,11 @@ export function CartWidget({
         </span>
       </button>
 
-      <div
-        role="dialog"
-        aria-modal="true"
+      <dialog
+        ref={dialog}
         aria-label="Il tuo ordine"
-        className={`fixed inset-0 z-50 ${isOpen ? '' : 'hidden'}`}
+        onClose={closeCart}
+        className="fixed inset-0 m-0 h-screen max-h-none w-screen max-w-none border-0 bg-transparent p-0"
       >
         <div className="absolute inset-0 bg-black/40" onClick={closeCart} />
         <div className="absolute inset-x-0 bottom-0 flex max-h-[85vh] flex-col overflow-y-auto rounded-t-2xl bg-surface p-5 shadow-2xl sm:inset-x-auto sm:bottom-auto sm:right-6 sm:top-1/2 sm:w-[26rem] sm:-translate-y-1/2 sm:rounded-2xl">
@@ -237,17 +289,27 @@ export function CartWidget({
           </div>
 
           {lines.length === 0 ? (
-            <p className="mt-6 text-sm text-muted">Il carrello è vuoto: aggiungi i prodotti dalla vetrina.</p>
+            <p className="mt-6 text-sm text-muted">
+              Il carrello è vuoto: aggiungi i prodotti dalla vetrina.
+            </p>
           ) : (
             <ul className="mt-4 space-y-4">
               {lines.map((line) => (
                 <li key={line.id} className="flex items-center gap-3">
                   <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg">
-                    <Image src={line.imageUrl} alt="" fill sizes="48px" className="object-cover" />
+                    <Image
+                      src={line.imageUrl}
+                      alt=""
+                      fill
+                      sizes="48px"
+                      className="object-cover"
+                    />
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium">{line.title}</p>
-                    <p className="text-xs text-muted">{formatPrice(line.price)} l&apos;uno</p>
+                    <p className="text-xs text-muted">
+                      {formatPrice(line.price)} l&apos;uno
+                    </p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
@@ -258,7 +320,9 @@ export function CartWidget({
                     >
                       −
                     </button>
-                    <span className="w-5 text-center text-sm font-semibold">{line.qty}</span>
+                    <span className="w-5 text-center text-sm font-semibold">
+                      {line.qty}
+                    </span>
                     <button
                       type="button"
                       onClick={() => setQty(line.id, line.qty + 1)}
@@ -277,7 +341,7 @@ export function CartWidget({
             <label className="mt-5 block text-sm">
               <span className="font-medium">Orario di ritiro</span>
               <select
-                value={slot}
+                value={selectedSlot}
                 onChange={(event) => setSlot(event.target.value)}
                 className="mt-1 w-full rounded-lg border border-foreground/15 bg-background px-3 py-2 text-sm"
               >
@@ -293,17 +357,27 @@ export function CartWidget({
 
           <div className="mt-5 flex items-center justify-between border-t border-foreground/10 pt-4">
             <span className="text-sm text-muted">Totale</span>
-            <span className="font-heading text-xl font-semibold">{formatPrice(total)}</span>
+            <span className="font-heading text-xl font-semibold">
+              {formatPrice(total)}
+            </span>
           </div>
 
           {lines.length > 0 ? (
             <a
+              data-demo-preview="handled"
               href={getWhatsAppHref(whatsapp, message)}
+              onClick={(event) => {
+                if (DEMO_MODE) {
+                  event.preventDefault();
+                  closeCart();
+                  preview(message);
+                }
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 block rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-white transition hover:brightness-110 active:scale-[0.98]"
             >
-              Invia ordine su WhatsApp
+              {DEMO_MODE ? "Prova l’ordine" : "Invia ordine su WhatsApp"}
             </a>
           ) : (
             <button
@@ -311,11 +385,11 @@ export function CartWidget({
               disabled
               className="mt-4 w-full cursor-not-allowed rounded-full border border-foreground/10 px-6 py-3 text-sm font-medium text-muted"
             >
-              Invia ordine su WhatsApp
+              {DEMO_MODE ? "Prova l’ordine" : "Invia ordine su WhatsApp"}
             </button>
           )}
         </div>
-      </div>
+      </dialog>
     </>
   );
 }

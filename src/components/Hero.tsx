@@ -1,5 +1,5 @@
 import type { SiteData } from '@/lib/site-data';
-import { getDirectionsUrl, getPhoneHref } from '@/lib/site-data';
+import { getDirectionsUrl, getPhoneHref } from '@/lib/site-utils';
 
 interface HeroProps {
   data: SiteData;

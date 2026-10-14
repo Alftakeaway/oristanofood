@@ -1,0 +1,131 @@
+export const samples = {
+  restaurant: {
+    name: "Osteria del Cortile",
+    tagline: "Cucina di stagione, ospitalità sarda",
+    description:
+      "Un esempio di osteria: ingredienti di stagione, ricette del territorio e tavoli da condividere. Immagina qui la storia e le fotografie del tuo locale.",
+    products: [
+      {
+        id: "demo-antipasto",
+        title: "Tagliere del territorio",
+        price: 12,
+        description: "Formaggi, salumi e pane croccante.",
+        category: "antipasti",
+        allergens: ["glutine", "latte"],
+      },
+      {
+        id: "demo-primo",
+        title: "Malloreddus al pomodoro",
+        price: 14,
+        description: "Pasta di semola, pomodoro e pecorino.",
+        category: "primi",
+        allergens: ["glutine", "latte"],
+      },
+      {
+        id: "demo-secondo",
+        title: "Orata al forno",
+        price: 21,
+        description: "Pesce al forno con patate ed erbe.",
+        category: "secondi",
+        allergens: ["pesce"],
+      },
+      {
+        id: "demo-dessert",
+        title: "Seadas al miele",
+        price: 7,
+        description: "Sfoglia croccante e cuore di formaggio.",
+        category: "dolci",
+        allergens: ["glutine", "latte"],
+      },
+    ],
+  },
+  pizzeria: {
+    name: "Pizzeria del Borgo",
+    tagline: "Lunga lievitazione, forno e convivialità",
+    description:
+      "Una pizzeria di esempio, con impasti curati e un menu facile da consultare. Prova a cambiare il nome, i colori e il prezzo di una pizza.",
+    products: [
+      {
+        id: "demo-margherita",
+        title: "Margherita",
+        price: 8,
+        description: "Pomodoro, fiordilatte e basilico.",
+        category: "pizze",
+        allergens: ["glutine", "latte"],
+      },
+      {
+        id: "demo-diavola",
+        title: "Diavola",
+        price: 10,
+        description: "Pomodoro, mozzarella e salame piccante.",
+        category: "pizze",
+        allergens: ["glutine", "latte"],
+      },
+      {
+        id: "demo-ortolana",
+        title: "Ortolana",
+        price: 10,
+        description: "Pomodoro e verdure di stagione, senza formaggio.",
+        category: "pizze",
+        allergens: ["glutine"],
+      },
+      {
+        id: "demo-tiramisu",
+        title: "Tiramisù",
+        price: 6,
+        description: "Caffè, mascarpone e savoiardi.",
+        category: "dolci",
+        allergens: ["glutine", "latte", "uova"],
+      },
+    ],
+  },
+  bakery: {
+    name: "Pasticceria Alba",
+    tagline: "Colazioni, dolci e torte su ordinazione",
+    description:
+      "Una pasticceria di esempio: dalla colazione alle occasioni speciali. Il tuo sito potrebbe presentare le creazioni del laboratorio e raccogliere richieste personalizzate.",
+    products: [
+      {
+        id: "demo-cornetto",
+        title: "Cornetto alla crema",
+        price: 2.5,
+        description: "Sfoglia al burro e crema alla vaniglia.",
+        category: "colazione",
+        allergens: ["glutine", "latte", "uova"],
+      },
+      {
+        id: "demo-pardula",
+        title: "Pardula alla ricotta",
+        price: 2,
+        description: "Ricotta e zafferano in una piccola sfoglia.",
+        category: "dolci",
+        allergens: ["glutine", "latte", "uova"],
+      },
+      {
+        id: "demo-biscotti",
+        title: "Biscotti alle mandorle",
+        price: 6,
+        description: "Una confezione di biscotti da condividere.",
+        category: "dolci",
+        allergens: ["glutine", "uova", "frutta a guscio"],
+      },
+      {
+        id: "demo-torta",
+        title: "Torta al cioccolato",
+        price: 28,
+        description: "Torta dimostrativa per sei persone.",
+        category: "torte",
+        allergens: ["glutine", "latte", "uova"],
+      },
+    ],
+  },
+};
+export const categoryLabels: Record<string, string> = {
+  antipasti: "Antipasti",
+  primi: "Primi",
+  secondi: "Secondi",
+  dolci: "Dolci",
+  pizze: "Pizze",
+  colazione: "Colazione",
+  torte: "Torte",
+};

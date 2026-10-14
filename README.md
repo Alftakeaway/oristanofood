@@ -49,3 +49,30 @@ Esempio alternativo: `src/config/presets/pasticceria.example.json`.
 
 Vercel, progetto `f33b0010`. Ogni push su `main` fa auto-deploy
 (dopo aver collegato il repo GitHub nel dashboard Vercel).
+
+
+## Presentazione ai commercianti
+
+Il progetto è una demo: nomi, recapiti, recensioni e prodotti sono esempi.
+Il pulsante **Prova il tuo locale** permette di scegliere ristorante, pizzeria o
+pasticceria, personalizzare nome, logo e colore, cambiare prezzi/disponibilità
+e simulare una chiusura per oggi. Tutte le prove rimangono nella sessione della
+singola scheda del browser: nessuna scrittura al repository o ai servizi remoti.
+Il pulsante **Ripristina demo** torna alla configurazione iniziale.
+
+Ordini, prenotazioni e contatti aprono un'anteprima: non contattano i recapiti
+dimostrativi. I webhook di aggiornamento pubblico sono disabilitati e le demo
+sono escluse dall'indicizzazione dei motori di ricerca. Non vengono conservati
+nel pannello nomi dei clienti, messaggi o richieste di prenotazione.
+
+`NEXT_PUBLIC_DEMO_MODE=false` è un opt-out per una futura installazione reale
+e richiede una nuova build. Prima di usarlo, configurare e verificare dati reali,
+autenticazione dei gestori, persistenza e integrazioni. Non basta spegnere la demo
+per ottenere un sito pronto per ordini o prenotazioni reali.
+
+### Verifiche della demo
+
+Sono state provate nel browser personalizzazione, cambio dei tre esempi, prezzi,
+ricaricamento, sessione di un altro visitatore, anteprime delle richieste,
+chiusura simulata, ripristino, visualizzazione mobile ed Escape. Le richieste
+di scrittura ai webhook in modalità demo restituiscono 403.

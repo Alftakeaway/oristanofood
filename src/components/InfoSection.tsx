@@ -4,7 +4,7 @@ import {
   getDirectionsUrl,
   getMapsEmbedUrl,
   getPhoneHref,
-} from '@/lib/site-data';
+} from '@/lib/site-utils';
 import type { DayKey } from '@/lib/open-status';
 import { DAY_ORDER, formatSlot, getItalianDayName, getTodayKey } from '@/lib/open-status';
 

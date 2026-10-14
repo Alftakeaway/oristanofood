@@ -1,5 +1,5 @@
 import type { BusinessInfo, SectionFlags } from '@/lib/site-data';
-import { getPhoneHref } from '@/lib/site-data';
+import { getPhoneHref } from '@/lib/site-utils';
 import type { OpenStatus } from '@/lib/open-status';
 import OpenStatusBadge from '@/components/OpenStatusBadge';
 

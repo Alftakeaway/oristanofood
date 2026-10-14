@@ -1,3 +1,4 @@
+import { DEMO_MODE } from "@/lib/demo-mode";
 import { NextResponse } from 'next/server';
 import { revalidateTag } from 'next/cache';
 import {
@@ -54,6 +55,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  if (DEMO_MODE) return NextResponse.json({ ok: false, error: "Demo: aggiornamenti pubblici disabilitati" }, { status: 403 });
   let body: unknown;
   try {
     body = await request.json();

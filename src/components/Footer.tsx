@@ -1,5 +1,6 @@
+import { DEMO_MODE } from "@/lib/demo-mode";
 import type { SiteData } from '@/lib/site-data';
-import { formatAddress, getPhoneHref } from '@/lib/site-data';
+import { formatAddress, getPhoneHref } from '@/lib/site-utils';
 
 interface FooterProps {
   data: SiteData;
@@ -26,7 +27,7 @@ export default function Footer({ data }: FooterProps) {
           <p>
             © {new Date().getFullYear()} {businessInfo.name} · Tutti i diritti riservati
           </p>
-          <p className="flex gap-4"><a href="/privacy" className="underline underline-offset-2 hover:opacity-100">Privacy</a><span>Sito autogestito · Aggiornato via WhatsApp</span></p>
+          <p className="flex gap-4"><a href="/privacy" className="underline underline-offset-2 hover:opacity-100">Privacy</a><span>{DEMO_MODE ? "Gestione dimostrativa nel browser" : "Sito autogestito · Aggiornato via WhatsApp"}</span></p>
         </div>
       </div>
     </footer>

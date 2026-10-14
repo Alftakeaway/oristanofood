@@ -1,3 +1,4 @@
+import { DEMO_MODE } from "./demo-mode";
 export function formatPrice(value: number): string {
   return new Intl.NumberFormat('it-IT', {
     style: 'currency',
@@ -6,6 +7,7 @@ export function formatPrice(value: number): string {
 }
 
 export function getWhatsAppHref(whatsapp: string, text?: string): string {
+  if (DEMO_MODE) return `#demo-contact${text ? `?text=${encodeURIComponent(text)}` : ""}`;
   const match = whatsapp.match(/wa\.me\/(\d+)/);
   const base = match ? `https://wa.me/${match[1]}` : whatsapp;
   return text ? `${base}?text=${encodeURIComponent(text)}` : base;
