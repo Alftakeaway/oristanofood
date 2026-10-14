@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { type DemoPreset, type DemoSettings } from "../../lib/demo-settings";
 import { demoLink } from "../../lib/demo-share";
+import MerchantInterest from "./MerchantInterest";
 
 type Props = {
   settings: DemoSettings;
@@ -29,6 +30,10 @@ export default function MerchantWizard({
   const fileInput = useRef<HTMLInputElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const uploadId = useRef(0);
+  const interacted = useRef(false);
+  const changedPrices = useRef(new Set<string>());
+  const eligibleOnClose = useRef(false);
+  const [interested, setInterested] = useState(false);
   const [step, setStep] = useState(1);
   const [shared, setShared] = useState("");
   const [contact, setContact] = useState(
@@ -132,6 +137,19 @@ export default function MerchantWizard({
         className="demo-dialog merchant-wizard"
         aria-labelledby="merchant-title"
         data-lenis-prevent
+        onChangeCapture={(event) => {
+          interacted.current = true;
+          const target = event.target;
+          if (target instanceof HTMLInputElement && target.type === "number") {
+            changedPrices.current.add(
+              target.getAttribute("aria-label") || "price",
+            );
+            if (changedPrices.current.size >= 3) eligibleOnClose.current = true;
+          }
+        }}
+        onClose={() => {
+          if (eligibleOnClose.current) setInterested(true);
+        }}
         onClick={(e) => {
           if (e.target === panel.current) panel.current.close();
         }}
@@ -280,7 +298,13 @@ export default function MerchantWizard({
               </p>
             </div>
             <div className="demo-actions">
-              <button type="button" onClick={() => panel.current?.close()}>
+              <button
+                type="button"
+                onClick={() => {
+                  eligibleOnClose.current = interacted.current;
+                  panel.current?.close();
+                }}
+              >
                 Guarda il risultato
               </button>
               <button type="button" className="demo-secondary" onClick={share}>
@@ -348,6 +372,10 @@ export default function MerchantWizard({
             onClick={() => {
               ++uploadId.current;
               reset();
+              interacted.current = false;
+              eligibleOnClose.current = false;
+              changedPrices.current.clear();
+              setInterested(false);
               setShared("");
               setStep(1);
             }}
@@ -356,6 +384,11 @@ export default function MerchantWizard({
           </button>
         </div>
       </dialog>
+      <MerchantInterest
+        eligible={interested}
+        name={settings.name.trim() || name}
+        settings={settings}
+      />
     </>
   );
 }

@@ -84,3 +84,9 @@ di scrittura ai webhook in modalità demo restituiscono 403.
 “Copia link della demo” genera un parametro `?demo=...` versionato e validato con nome, colore e modifiche al menu. I loghi caricati restano locali e non vengono condivisi. Se la clipboard non è disponibile, il link si può copiare dal campo di testo. Link non validi e troppo lunghi sono gestiti senza bloccare la demo.
 
 La CTA commerciale persistente apre una bozza email a alfredoforte.web@gmail.com con il link dell'anteprima; nessun invio automatico. Ordini e prenotazioni demo restano simulati. Non inserire dati sensibili nei nomi o nei link condivisi.
+
+## Invito commerciale dopo la prova
+
+L'invito compare dopo una personalizzazione completata oppure alla chiusura del pannello dopo tre prezzi distinti modificati. Non compare all'ingresso. Si può chiudere per il resto della sessione.
+
+Il pannello permette di indicare email o WhatsApp per essere ricontattati e prepara una richiesta a alfredoforte.web@gmail.com. L'invio richiede l'app email del visitatore; nessun messaggio viene spedito dal sito. Il recapito resta nello stato temporaneo del pannello, viene cancellato alla chiusura e non viene inserito nel link demo o in localStorage. È disponibile la copia manuale del testo.

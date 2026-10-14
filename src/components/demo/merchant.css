@@ -89,6 +89,79 @@
 .merchant-wizard .demo-small {
   overflow-wrap: anywhere;
 }
+.merchant-interest {
+  position: fixed;
+  bottom: 92px;
+  left: 20px;
+  z-index: 65;
+  width: min(350px, calc(100vw - 40px));
+  padding: 20px;
+  background: #fffaf3;
+  color: #221a16;
+  border: 1px solid #b5aa9c;
+  border-top: 4px solid #263e62;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px #0002;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+}
+.merchant-interest p {
+  margin: 0 0 12px;
+}
+.merchant-interest p:first-of-type {
+  padding-right: 20px;
+}
+.merchant-interest-close {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  border: 0;
+  background: transparent;
+  color: #221a16;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.merchant-later {
+  display: block;
+  margin-top: 12px;
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  color: #493d32;
+  cursor: pointer;
+  padding: 6px 0;
+  font: inherit;
+}
+.merchant-interest :focus-visible {
+  outline: 3px solid #263e62;
+  outline-offset: 3px;
+}
+.merchant-lead {
+  width: min(580px, calc(100% - 24px));
+}
+.merchant-lead textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  border: 1px solid #b5aa9c;
+  border-radius: 4px;
+  background: white;
+  color: #221a16;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+  resize: vertical;
+}
+.merchant-lead-ready {
+  margin-top: 24px;
+  border-top: 1px solid #ded4c6;
+}
+.merchant-lead-ready .demo-secondary {
+  margin: 10px 0 0 10px;
+}
 @media (max-width: 540px) {
   .demo-host:has(.merchant-bar) {
     padding-top: 88px;
@@ -131,7 +204,8 @@
   }
 }
 @media print {
-  .merchant-bar {
+  .merchant-bar,
+  .merchant-interest {
     display: none;
   }
 }
