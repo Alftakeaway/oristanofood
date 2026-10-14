@@ -76,3 +76,11 @@ Sono state provate nel browser personalizzazione, cambio dei tre esempi, prezzi,
 ricaricamento, sessione di un altro visitatore, anteprime delle richieste,
 chiusura simulata, ripristino, visualizzazione mobile ed Escape. Le richieste
 di scrittura ai webhook in modalità demo restituiscono 403.
+
+## Personalizzazione commerciale delle demo
+
+“Prova il tuo locale” apre un percorso in tre passi: attività e nome, colore e logo, anteprima. Le preferenze sono salvate in localStorage, separate per dominio; le precedenti prove nella scheda sono migrate quando disponibili. Il ripristino cancella la personalizzazione e il parametro demo dall'indirizzo.
+
+“Copia link della demo” genera un parametro `?demo=...` versionato e validato con nome, colore e modifiche al menu. I loghi caricati restano locali e non vengono condivisi. Se la clipboard non è disponibile, il link si può copiare dal campo di testo. Link non validi e troppo lunghi sono gestiti senza bloccare la demo.
+
+La CTA commerciale persistente apre una bozza email a alfredoforte.web@gmail.com con il link dell'anteprima; nessun invio automatico. Ordini e prenotazioni demo restano simulati. Non inserire dati sensibili nei nomi o nei link condivisi.
