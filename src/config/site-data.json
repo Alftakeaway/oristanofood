@@ -1,42 +1,41 @@
 {
   "businessInfo": {
-    "name": "Osteria Fenicio",
-    "tagline": "Ristorante Pizzeria · Cucina sarda dal 1962",
-    "type": "pizzeria",
+    "name": "Osteria del Portico",
+    "tagline": "Cucina sarda, un tavolo alla volta",
+    "type": "restaurant",
     "cuisine": [
-      "Pizza",
       "Cucina sarda",
       "Pesce"
     ],
     "logo": "/logo.svg",
-    "description": "Osteria e pizzeria nel centro di Oristano: pasta di semola tirata ogni mattina, pesce del mercato di Torre Grande, pizza a lunga maturazione cotta nel forno a legna a 450 °C. Due sale e un dehors sul retro per pranzi di lavoro, cene e occasioni in famiglia.",
+    "description": "Una cucina di mare e di terra, pasta di semola e ricette di Sardegna. Esplora la carta, componi una degustazione e prova a prenotare il tuo tavolo.",
     "address": {
-      "street": "Via Eleonora d'Arborea 45",
+      "street": "Indirizzo dimostrativo da personalizzare",
       "city": "Oristano",
       "zip": "09170",
       "country": "Italia"
     },
     "geo": {
       "lat": 39.9074,
-      "lng": 0.8782
+      "lng": 8.592
     },
-    "phone": "+39 0783 123456",
-    "whatsapp": "https://wa.me/390783123456",
+    "phone": "Recapito dimostrativo",
+    "whatsapp": "#demo-contact",
     "timezone": "Europe/Rome",
     "priceRange": "€€"
   },
   "styles": {
     "colors": {
-      "primary": "#7A2E1D",
-      "secondary": "#2F4A3C",
-      "accent": "#D9A441",
-      "background": "#FBF7F0",
+      "primary": "#234B3D",
+      "secondary": "#263E62",
+      "accent": "#B79858",
+      "background": "#F5F6F1",
       "surface": "#FFFFFF",
-      "foreground": "#221A16",
-      "muted": "#7A6C62"
+      "foreground": "#23352E",
+      "muted": "#596B60"
     },
     "fonts": {
-      "heading": "Playfair Display",
+      "heading": "Cormorant Garamond",
       "body": "Inter"
     }
   },
@@ -116,48 +115,15 @@
       ]
     }
   },
-  "exceptions": [
-    {
-      "date": "2026-11-02",
-      "isOpen": false,
-      "note": "Chiuso per Ognissanti"
-    },
-    {
-      "date": "2026-12-24",
-      "isOpen": true,
-      "slots": [
-        {
-          "open": "19:00",
-          "close": "23:00"
-        }
-      ],
-      "note": "Vigilia: solo cena, menù della festa su prenotazione"
-    },
-    {
-      "date": "2026-12-25",
-      "isOpen": false,
-      "note": "Chiuso per Natale"
-    },
-    {
-      "date": "2026-08-15",
-      "isOpen": true,
-      "slots": [
-        {
-          "open": "19:00",
-          "close": "00:00"
-        }
-      ],
-      "note": "Ferragosto: servizio serale con musica dal vivo"
-    }
-  ],
+  "exceptions": [],
   "sections": {
     "menu": true,
-    "pizza": true,
+    "pizza": false,
     "booking": true,
     "services": true,
     "wine": true,
     "allergens": true,
-    "showcase": true
+    "showcase": false
   },
   "courses": [
     {
@@ -177,50 +143,6 @@
       "note": "Dolci della casa, miele di corbezzolo e liquori artigianali."
     }
   ],
-  "pizza": {
-    "categories": [
-      "Pizze Classiche",
-      "Pizze Speciali"
-    ],
-    "doughNote": "Impasto diretto con lievito madre, 48 ore di maturazione e farina tipo 2 macinata a pietra. Cornicione alveolato, cottura in forno a legna a 450 °C.",
-    "styles": [
-      {
-        "name": "Tonda napoletana",
-        "description": "Diametro 32 cm, cornicione alto e morbida al morso."
-      },
-      {
-        "name": "Bassa romana",
-        "description": "Stesa sottile e croccante, diametro 30 cm."
-      },
-      {
-        "name": "Al taglio",
-        "description": "Vaschetta del giorno a pranzo, venduta al peso."
-      }
-    ],
-    "extras": [
-      {
-        "name": "Mozzarella di bufala D.O.P. extra",
-        "price": 3
-      },
-      {
-        "name": "Gambero rosso di Mazara",
-        "price": 5
-      },
-      {
-        "name": "Bottarga di muggine",
-        "price": 4
-      },
-      {
-        "name": "Uovo di quaglia",
-        "price": 1.5
-      },
-      {
-        "name": "Impasto senza glutine",
-        "price": 2
-      }
-    ],
-    "note": "Per i celiaci usiamo banco, teglia e forno dedicati: la sovraprezzo copre l'impasto senza glutine."
-  },
   "booking": {
     "maxParty": 12,
     "advanceDays": 21,
@@ -230,40 +152,16 @@
   },
   "services": [
     {
-      "label": "Asporto",
-      "note": "Componi l'ordine dal menù e ritira all'orario che preferisci."
+      "label": "Il tuo tavolo",
+      "note": "Prova data, coperti e preferenza tra sala e dehors. Nessuna prenotazione reale."
     },
     {
-      "label": "Consegna a Oristano",
-      "note": "Gratuita sopra 25 €, 3 € sotto. Centro, Torrenova, Donigama e Santa Severa."
+      "label": "Percorsi degustazione",
+      "note": "Mare o terra, con abbinamento facoltativo e riepilogo per i tuoi ospiti."
     },
     {
-      "label": "Pranzo di lavoro",
-      "note": "Menù fisso dal martedì al venerdì: primo, secondo, acqua e caffè a 11,50 €."
-    },
-    {
-      "label": "Happy hour 18:00–20:00",
-      "note": "Tagliere piccolo e stuzzichini con calice di Vermentino a 9 €."
-    },
-    {
-      "label": "Eventi e banchetti",
-      "note": "Sala da 30 coperti e dehors da 24: compleanni, cresime, cene aziendali."
-    },
-    {
-      "label": "Senza glutine",
-      "note": "Impasto e banco dedicati, 2 pizze e 1 dolce certificati in carta."
-    },
-    {
-      "label": "Bambini",
-      "note": "Menù ridotto 8 €, seggioloni e angolo giochi nel dehors."
-    },
-    {
-      "label": "Animali benvenuti",
-      "note": "Ciotole e acqua nel dehors, cani di ogni taglia."
-    },
-    {
-      "label": "Pagamenti",
-      "note": "Contanti, bancomat, carte e Satispay. Coperto 2,00 € a persona."
+      "label": "Occasioni speciali",
+      "note": "Aggiungi una ricorrenza alla richiesta dimostrativa del tavolo."
     }
   ],
   "wine": {
@@ -378,7 +276,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "carciofi-alla-sarda",
@@ -401,7 +299,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "datterini-bocconchini",
@@ -421,7 +319,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "fregola-frutti-di-mare",
@@ -449,7 +347,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "malloreddus-campidanese",
@@ -471,7 +369,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "lorighittas-ragu-agnello",
@@ -494,7 +392,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "grigliata-di-pesce",
@@ -519,7 +417,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "maialetto-cannonau",
@@ -541,7 +439,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "fritto-misto-di-mare",
@@ -565,7 +463,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": false,
-      "feature": true
+      "feature": false
     },
     {
       "id": "seadas-miele",
@@ -587,7 +485,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "torta-mandorle-arancia",
@@ -610,7 +508,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "panna-cotta-mirto",
@@ -632,165 +530,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
-    },
-    {
-      "id": "margherita-dop",
-      "title": "Margherita D.O.P.",
-      "description": "Fior di latte di Agerola D.O.P., pomodoro San Marzano, basilico e olio EVO.",
-      "price": 7.5,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "fior di latte D.O.P.",
-        "San Marzano",
-        "basilico",
-        "olio EVO"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "marinara",
-      "title": "Marinara",
-      "description": "La pizza senza formaggio: pomodoro, aglio in camicia, origano e olio EVO. Vegana.",
-      "price": 6,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "pomodoro",
-        "aglio",
-        "origano",
-        "olio EVO"
-      ],
-      "allergens": [
-        "glutine"
-      ],
-      "glutenFree": false,
-      "vegan": true,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "pizza-sarda",
-      "title": "Pizza Sarda",
-      "description": "Crema di carciofi, pecorino sardo, scaglie di bottarga di muggine e olio a crudo.",
-      "price": 11,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "carciofi",
-        "pecorino",
-        "bottarga"
-      ],
-      "allergens": [
-        "glutine",
-        "latte",
-        "pesce"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "diavola",
-      "title": "Diavola",
-      "description": "Fior di latte, salame piccante calabro e pomodoro, con un filo di olio al peperoncino.",
-      "price": 9,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "fior di latte",
-        "salame piccante",
-        "pomodoro"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "fenicia-gambero-rosso",
-      "title": "Fenicia al Gambero Rosso",
-      "description": "Base bianca, burrata, gambero rosso di Mazara e bottarga; esce dal forno con lime grattugiato.",
-      "price": 14,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "burrata",
-        "gambero rosso",
-        "bottarga",
-        "lime"
-      ],
-      "allergens": [
-        "glutine",
-        "latte",
-        "crostacei",
-        "pesce"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "quattro-formaggi-sg",
-      "title": "Quattro Formaggi Senza Glutine",
-      "description": "Impasto dedicato GF, gorgonzola, pecorino, mozzarella e ricotta infornata.",
-      "price": 11,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "gorgonzola",
-        "pecorino",
-        "mozzarella",
-        "ricotta"
-      ],
-      "allergens": [
-        "latte",
-        "uova"
-      ],
-      "glutenFree": true,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "ortolana-vegana",
-      "title": "Ortolana Vegana",
-      "description": "Verdure di stagione grigliate, pomodorini confit, crema di cannellini e origano.",
-      "price": 10,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "ingredients": [
-        "zucchine",
-        "melanzane",
-        "peperoni",
-        "cannellini",
-        "pomodorini"
-      ],
-      "allergens": [
-        "glutine",
-        "sedano"
-      ],
-      "glutenFree": false,
-      "vegan": true,
-      "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "burrata-prosciutto-villagrande",
@@ -815,7 +555,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "cozze-marinara-crostoni",
@@ -840,7 +580,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "culurgiones-sugo-pecorino",
@@ -866,7 +606,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "spaghetti-ricci-di-mare",
@@ -891,7 +631,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "orata-isolana-forno",
@@ -915,7 +655,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "agnello-agrodolce-carciofi",
@@ -937,7 +677,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "tiramisu-ogliastra",
@@ -963,7 +703,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "sorbetto-limone-sinnai",
@@ -984,85 +724,7 @@
       "glutenFree": true,
       "vegan": true,
       "available": true,
-      "feature": true
-    },
-    {
-      "id": "capricciosa",
-      "title": "Capricciosa",
-      "description": "Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi e olive.",
-      "price": 9.5,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "pomodoro",
-        "mozzarella",
-        "prosciutto cotto",
-        "funghi",
-        "carciofi",
-        "olive"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "tonno-cipolla-tropea",
-      "title": "Tonno e Cipolla di Tropea",
-      "description": "Tonno all'olio EVO, cipolla di Tropea caramellata e olive taggiasche.",
-      "price": 12,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "tonno",
-        "cipolla di Tropea",
-        "olive taggiasche",
-        "mozzarella"
-      ],
-      "allergens": [
-        "glutine",
-        "latte",
-        "pesce"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "bufalina-rucola-pachino",
-      "title": "Bufalina con Rucola e Pachino",
-      "description": "Bufala campana, rucola fresca, pachino e riduzione di aceto balsamico.",
-      "price": 12.5,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "bufala",
-        "rucola",
-        "pomodorini pachino",
-        "balsamico"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "tagliere-formaggi-sardi",
@@ -1088,7 +750,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "zuppa-gallurese",
@@ -1112,7 +774,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "porceddu-forno",
@@ -1133,7 +795,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "pardulas-ricotta",
@@ -1159,59 +821,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
-    },
-    {
-      "id": "quattro-stagioni",
-      "title": "Quattro Stagioni",
-      "description": "Pomodoro, mozzarella, prosciutto, funghi, carciofi e olive a spicchi.",
-      "price": 10,
-      "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "pomodoro",
-        "mozzarella",
-        "prosciutto cotto",
-        "funghi",
-        "carciofi",
-        "olive"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
-    },
-    {
-      "id": "parmigiana-melanzane",
-      "title": "Parmigiana con Melanzane",
-      "description": "Melanzane fritte, pomodoro, mozzarella di bufala e basilico fresco.",
-      "price": 11.5,
-      "category": "Pizze Speciali",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
-      "ingredients": [
-        "melanzane",
-        "pomodoro",
-        "bufala",
-        "basilico"
-      ],
-      "allergens": [
-        "glutine",
-        "latte"
-      ],
-      "glutenFree": false,
-      "vegan": false,
-      "available": true,
-      "feature": true
+      "feature": false
     }
   ]
 }

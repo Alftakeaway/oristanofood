@@ -1,9 +1,13 @@
-'use client';
+"use client";
 
-import type { MenuCourse, ShowcaseItem } from '@/lib/site-data';
-import { formatPrice } from '@/lib/format';
-import { AddToCartButton } from '@/components/cart';
-import { DietFilterBar, matchesDiet, useDietFilter } from '@/components/diet-filter';
+import type { MenuCourse, ShowcaseItem } from "@/lib/site-data";
+import { formatPrice } from "@/lib/format";
+
+import {
+  DietFilterBar,
+  matchesDiet,
+  useDietFilter,
+} from "@/components/diet-filter";
 
 interface MenuSectionProps {
   items: ShowcaseItem[];
@@ -17,7 +21,13 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
     items.some((item) => item.category === course.category),
   );
   const extraCategories: MenuCourse[] = Array.from(
-    new Set(items.map((item) => item.category).filter((category) => !courses.some((course) => course.category === category))),
+    new Set(
+      items
+        .map((item) => item.category)
+        .filter(
+          (category) => !courses.some((course) => course.category === category),
+        ),
+    ),
   ).map((category) => ({ category }));
   const ordered = [...known, ...extraCategories];
 
@@ -28,9 +38,12 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <h2 className="font-heading text-3xl font-medium md:text-4xl">Il menù</h2>
+            <h2 className="font-heading text-3xl font-medium md:text-4xl">
+              Il menù
+            </h2>
             <p className="mt-2 text-sm text-muted">
-              Piatti della cucina e pizze: clicca il + per comporre il tuo ordine da asporto.
+              Antipasti, primi, secondi e dolci. Esplora la carta o prova un
+              percorso degustazione; prezzi dimostrativi.
             </p>
           </div>
           <DietFilterBar />
@@ -39,7 +52,8 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
         <div className="mt-10 grid gap-x-14 gap-y-14 md:grid-cols-2">
           {ordered.map((course) => {
             const rows = items.filter(
-              (item) => item.category === course.category && matchesDiet(item, diet),
+              (item) =>
+                item.category === course.category && matchesDiet(item, diet),
             );
             if (rows.length === 0) return null;
             return (
@@ -47,7 +61,11 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
                 <h3 className="font-heading text-2xl text-primary">
                   {course.label ?? course.category}
                 </h3>
-                {course.note && <p className="mt-1 text-xs italic text-muted">{course.note}</p>}
+                {course.note && (
+                  <p className="mt-1 text-xs italic text-muted">
+                    {course.note}
+                  </p>
+                )}
                 <ul className="mt-4 space-y-5">
                   {rows.map((item) => (
                     <li key={item.id}>
@@ -55,12 +73,15 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
                         <span
                           className={
                             item.available
-                              ? 'font-medium'
-                              : 'font-medium text-muted line-through decoration-foreground/30'
+                              ? "font-medium"
+                              : "font-medium text-muted line-through decoration-foreground/30"
                           }
                         >
                           {item.title}
                         </span>
+                        {!item.available && (
+                          <span className="text-xs text-muted">Esaurito</span>
+                        )}
                         {item.glutenFree && (
                           <span
                             className="rounded-full bg-secondary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-secondary"
@@ -84,16 +105,6 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
                         <span className="shrink-0 font-heading font-semibold">
                           {formatPrice(item.price)}
                         </span>
-                        <AddToCartButton
-                          variant="row"
-                          item={{
-                            id: item.id,
-                            title: item.title,
-                            price: item.price,
-                            imageUrl: item.imageUrl,
-                            available: item.available,
-                          }}
-                        />
                       </div>
                       <p className="mt-1 text-sm leading-relaxed text-muted">
                         {item.description}

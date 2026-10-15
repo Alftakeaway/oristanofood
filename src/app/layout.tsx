@@ -7,6 +7,7 @@ import { resolveBaseUrl } from "@/lib/base-url";
 import { fontRegistry, type FontName } from "@/lib/fonts";
 import { getSiteData } from "@/lib/site-data";
 import "./globals.css";
+import "./venue.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { businessInfo } = await getSiteData();

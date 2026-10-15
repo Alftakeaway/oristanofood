@@ -49,6 +49,8 @@ export default function BookingSection({
   const [party, setParty] = useState(2);
   const [name, setName] = useState("");
   const [notes, setNotes] = useState("");
+  const [area, setArea] = useState("Nessuna preferenza");
+  const [occasion, setOccasion] = useState("Nessuna ricorrenza");
   const [privacyOk, setPrivacyOk] = useState(false);
 
   const availability = getDayAvailability(date, hours, exceptions);
@@ -61,7 +63,13 @@ export default function BookingSection({
   const maxIso = addDays(today, advanceDays);
   const href = getWhatsAppHref(
     businessInfo.whatsapp,
-    buildBookingMessage({ date, time: selectedTime, party, name, notes }),
+    buildBookingMessage({
+      date,
+      time: selectedTime,
+      party,
+      name,
+      notes: `${notes}\nTavolo: ${area}\nOccasione: ${occasion}`,
+    }),
   );
 
   return (
@@ -79,6 +87,32 @@ export default function BookingSection({
                   "Compila la richiesta: ti risponderemo su WhatsApp per confermare la disponibilità.")}
             </p>
 
+            <div className="venue-booking-preferences">
+              <label className="venue-field">
+                Preferenza tavolo
+                <select value={area} onChange={(e) => setArea(e.target.value)}>
+                  <option>Nessuna preferenza</option>
+                  <option>Sala interna</option>
+                  <option>Dehors</option>
+                </select>
+              </label>
+              <label className="venue-field">
+                Occasione
+                <select
+                  value={occasion}
+                  onChange={(e) => setOccasion(e.target.value)}
+                >
+                  <option>Nessuna ricorrenza</option>
+                  <option>Compleanno</option>
+                  <option>Anniversario</option>
+                  <option>Cena di lavoro</option>
+                </select>
+              </label>
+            </div>
+            <p className="venue-demo-note">
+              Le preferenze non garantiscono un tavolo: nel sito reale
+              servirebbe la conferma del ristorante.
+            </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {openDays.map((iso) => (
                 <button
@@ -208,7 +242,8 @@ export default function BookingSection({
                     <a href="/privacy" className="underline underline-offset-2">
                       informativa privacy
                     </a>{" "}
-                    e accetto che i dati della richiesta viaggino via WhatsApp.
+                    e ho compreso che questa richiesta resta un’anteprima
+                    dimostrativa.
                   </span>
                 </label>
                 <a

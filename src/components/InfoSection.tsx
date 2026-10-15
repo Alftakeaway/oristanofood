@@ -1,12 +1,17 @@
-import type { SiteData } from '@/lib/site-data';
+import type { SiteData } from "@/lib/site-data";
 import {
   formatAddress,
   getDirectionsUrl,
   getMapsEmbedUrl,
   getPhoneHref,
-} from '@/lib/site-utils';
-import type { DayKey } from '@/lib/open-status';
-import { DAY_ORDER, formatSlot, getItalianDayName, getTodayKey } from '@/lib/open-status';
+} from "@/lib/site-utils";
+import type { DayKey } from "@/lib/open-status";
+import {
+  DAY_ORDER,
+  formatSlot,
+  getItalianDayName,
+  getTodayKey,
+} from "@/lib/open-status";
 
 interface InfoSectionProps {
   data: SiteData;
@@ -34,12 +39,22 @@ export default function InfoSection({ data }: InfoSectionProps) {
                     key={day}
                     className="flex items-center justify-between border-b border-foreground/5 py-3 text-sm last:border-0"
                   >
-                    <span className={isToday ? 'flex items-center gap-2 font-semibold' : undefined}>
-                      {isToday && <span className="h-2 w-2 rounded-full bg-primary" />}
+                    <span
+                      className={
+                        isToday
+                          ? "flex items-center gap-2 font-semibold"
+                          : undefined
+                      }
+                    >
+                      {isToday && (
+                        <span className="h-2 w-2 rounded-full bg-primary" />
+                      )}
                       {getItalianDayName(day)}
                     </span>
                     <span className="text-muted">
-                      {slots.length > 0 ? slots.map(formatSlot).join('  ·  ') : 'Chiuso'}
+                      {slots.length > 0
+                        ? slots.map(formatSlot).join("  ·  ")
+                        : "Chiuso"}
                     </span>
                   </div>
                 );
@@ -65,12 +80,14 @@ export default function InfoSection({ data }: InfoSectionProps) {
           </div>
 
           <div>
-            <iframe
-              src={getMapsEmbedUrl(businessInfo.geo)}
-              title={`Mappa di ${businessInfo.name}`}
-              loading="lazy"
-              className="h-[320px] w-full rounded-2xl border border-foreground/10"
-            />
+            <div className="venue-address">
+              <span aria-hidden="true">⌖</span>
+              <h3>Il tuo locale, a Oristano</h3>
+              <p>
+                Qui appariranno la mappa e i recapiti della tua attività. Questa
+                è una demo: l’indirizzo è immaginario.
+              </p>
+            </div>
             <p className="mt-4 text-sm text-muted">
               {formatAddress(businessInfo.address)}
             </p>
