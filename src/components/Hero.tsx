@@ -10,7 +10,7 @@ export default function Hero({ data }: HeroProps) {
   const colors = styles.colors;
 
   return (
-    <section className="relative flex min-h-[88svh] items-center justify-center overflow-hidden">
+    <section data-demo-hero className="relative flex min-h-[88svh] items-center justify-center overflow-hidden">
       <div
         className="absolute -top-32 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full"
         style={{

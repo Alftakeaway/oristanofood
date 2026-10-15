@@ -142,6 +142,7 @@ export function DemoProvider({
               notify={setNotice}
               name={demoName(config)}
               color={demoColor(base)}
+              exportItems={items.map(item=>({name:item.title,category:item.category,price:item.price,available:item.available,allergens:item.allergens}))}
               reset={() => {
                 setSettings(emptySettings());
                 clearSharedURL();

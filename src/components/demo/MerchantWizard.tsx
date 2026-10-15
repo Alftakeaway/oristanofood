@@ -3,6 +3,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { type DemoPreset, type DemoSettings } from "../../lib/demo-settings";
 import { demoLink } from "../../lib/demo-share";
 import MerchantInterest from "./MerchantInterest";
+import MerchantStudio from "./MerchantStudio";
+import type { ExportItem } from "../../lib/demo-export";
 
 type Props = {
   settings: DemoSettings;
@@ -14,6 +16,7 @@ type Props = {
   color: string;
   bakery?: boolean;
   advanced?: ReactNode;
+  exportItems: ExportItem[];
 };
 export default function MerchantWizard({
   settings,
@@ -25,6 +28,7 @@ export default function MerchantWizard({
   color,
   bakery,
   advanced,
+  exportItems,
 }: Props) {
   const panel = useRef<HTMLDialogElement>(null);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -389,6 +393,7 @@ export default function MerchantWizard({
         name={settings.name.trim() || name}
         settings={settings}
       />
+      <MerchantStudio name={settings.name.trim() || name} settings={settings} items={exportItems} contact={contact} bakery={bakery} />
     </>
   );
 }
