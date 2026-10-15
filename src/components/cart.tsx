@@ -20,6 +20,9 @@ export interface CartEntry {
   title: string;
   price: number;
   imageUrl: string;
+  baseId?: string;
+  variantLabel?: string;
+  surcharge?: number;
 }
 
 interface CartLine extends CartEntry {
@@ -53,14 +56,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setLines((prev) =>
       prev.flatMap((line) => {
         const item = config.showcase.find(
-          (item) => item.id === line.id && item.available,
+          (item) => item.id === (line.baseId ?? line.id) && item.available,
         );
         return item
           ? [
               {
                 ...line,
-                title: item.title,
-                price: item.price,
+                title: line.variantLabel
+                  ? `${item.title} — ${line.variantLabel}`
+                  : item.title,
+                price:
+                  (Math.round(item.price * 100) +
+                    Math.round((line.surcharge ?? 0) * 100)) /
+                  100,
                 imageUrl: item.imageUrl,
               },
             ]
@@ -217,7 +225,7 @@ export function CartWidget({
       ...rows,
       `Totale: ${formatPrice(total)}`,
     ];
-    if (selectedSlot) parts.push(`Ritiro: ${selectedSlot}`);
+    if (selectedSlot) parts.push(`Ritiro indicativo di oggi: ${selectedSlot}`);
     return parts.join("\n");
   }, [lines, total, selectedSlot]);
 
@@ -339,13 +347,13 @@ export function CartWidget({
 
           {pickupSlots.length > 0 && (
             <label className="mt-5 block text-sm">
-              <span className="font-medium">Orario di ritiro</span>
+              <span className="font-medium">Ritiro indicativo di oggi</span>
               <select
                 value={selectedSlot}
                 onChange={(event) => setSlot(event.target.value)}
                 className="mt-1 w-full rounded-lg border border-foreground/15 bg-background px-3 py-2 text-sm"
               >
-                <option value="">Da concordare su WhatsApp</option>
+                <option value="">Orario da concordare · Demo</option>
                 {pickupSlots.map((pickup) => (
                   <option key={pickup} value={pickup}>
                     {pickup}

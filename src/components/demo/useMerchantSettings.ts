@@ -27,12 +27,7 @@ export function useMerchantSettings(enabled = true, key = "merchant-demo:v2") {
         );
       } else {
         try {
-          setSettings(
-            readSettings(
-              localStorage.getItem(key) ??
-                sessionStorage.getItem("merchant-demo:v1"),
-            ),
-          );
+          setSettings(readSettings(localStorage.getItem(key)));
         } catch {
           setNotice(
             "Il browser non consente il salvataggio. Puoi comunque copiare il link.",

@@ -40,9 +40,12 @@ test("demo changes are isolated, reversible and reject untrusted settings", () =
   assert.equal(other.showcase[0].price, base.showcase[0].price);
   for (const preset of ["restaurant", "pizzeria", "bakery"] as const) {
     const example = applyDemo(base, { ...emptySettings(), preset });
-    assert.equal(example.businessInfo.type, preset);
-    assert.equal(example.showcase.length, 4);
-    assert.equal(new Set(example.showcase.map((item) => item.id)).size, 4);
+    assert.equal(example.businessInfo.type, base.businessInfo.type);
+    assert.equal(example.showcase.length, base.showcase.length);
+    assert.equal(
+      new Set(example.showcase.map((item) => item.id)).size,
+      base.showcase.length,
+    );
     assert.equal(JSON.stringify(base), before);
   }
   const restored = applyDemo(base, emptySettings());

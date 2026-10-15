@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { type DemoPreset, type DemoSettings } from "../../lib/demo-settings";
+import { type DemoSettings } from "../../lib/demo-settings";
 import { demoLink } from "../../lib/demo-share";
 import MerchantInterest from "./MerchantInterest";
 import MerchantStudio from "./MerchantStudio";
@@ -193,30 +193,9 @@ export default function MerchantWizard({
         </h3>
         {step === 1 && (
           <>
-            <label>
-              Tipo di attività
-              <select
-                value={settings.preset}
-                onChange={(e) =>
-                  patch({
-                    preset: e.target.value as DemoPreset,
-                    items: {},
-                    closed: false,
-                  })
-                }
-              >
-                <option value="original">
-                  {bakery ? "Panetteria" : "Demo originale"}
-                </option>
-                {!bakery && (
-                  <>
-                    <option value="restaurant">Ristorante</option>
-                    <option value="pizzeria">Pizzeria</option>
-                  </>
-                )}
-                <option value="bakery">Pasticceria</option>
-              </select>
-            </label>
+            <p className="demo-small">
+              Demo dedicata: pizzeria. Personalizza nome, colore, logo e menu.
+            </p>
             <label>
               Nome del locale
               <input
@@ -393,7 +372,13 @@ export default function MerchantWizard({
         name={settings.name.trim() || name}
         settings={settings}
       />
-      <MerchantStudio name={settings.name.trim() || name} settings={settings} items={exportItems} contact={contact} bakery={bakery} />
+      <MerchantStudio
+        name={settings.name.trim() || name}
+        settings={settings}
+        items={exportItems}
+        contact={contact}
+        bakery={bakery}
+      />
     </>
   );
 }

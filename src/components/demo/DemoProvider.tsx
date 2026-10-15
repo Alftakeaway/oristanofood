@@ -21,6 +21,7 @@ import { DEMO_MODE } from "@/lib/demo-mode";
 import { emptySettings, type DemoSettings } from "@/lib/demo-settings";
 
 import MerchantWizard from "./MerchantWizard";
+import { DEMO_KIND, DEMO_STORAGE_KEY } from "@/lib/demo-identity";
 import { useMerchantSettings } from "./useMerchantSettings";
 
 const Context = createContext<{
@@ -55,7 +56,7 @@ export function DemoProvider({
     return () => clearInterval(timer);
   }, []);
   const { settings, setSettings, notice, setNotice, clearSharedURL } =
-    useMerchantSettings(DEMO_MODE);
+    useMerchantSettings(DEMO_MODE, DEMO_STORAGE_KEY);
   const [resetId, setResetId] = useState(0);
   const [message, setMessage] = useState("");
   const previewDialog = useRef<HTMLDialogElement>(null);
@@ -82,7 +83,7 @@ export function DemoProvider({
     <Context.Provider value={{ config, settings, now, resetId, preview }}>
       <div
         id="demo-contact"
-        className="demo-host"
+        className={`demo-host venue-${DEMO_KIND}`}
         style={demoStyle(config)}
         onClickCapture={(event) => {
           if (!DEMO_MODE || !(event.target instanceof Element)) return;
@@ -142,7 +143,13 @@ export function DemoProvider({
               notify={setNotice}
               name={demoName(config)}
               color={demoColor(base)}
-              exportItems={items.map(item=>({name:item.title,category:item.category,price:item.price,available:item.available,allergens:item.allergens}))}
+              exportItems={items.map((item) => ({
+                name: item.title,
+                category: item.category,
+                price: item.price,
+                available: item.available,
+                allergens: item.allergens,
+              }))}
               reset={() => {
                 setSettings(emptySettings());
                 clearSharedURL();
