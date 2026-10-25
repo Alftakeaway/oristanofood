@@ -59,10 +59,9 @@ export default function Footer({ data }: FooterProps) {
           </p>
         </div>
         <p className="of-photo-credit">
-          Fotografie illustrative: Simon Legner, andria, Pietro Di Fontana,
-          Raffaele Diomede e Unsplash.{" "}
+          Fotografie illustrative da Wikimedia Commons e Unsplash.{" "}
           <a href="/crediti" className="underline">
-            Fonti, licenze e adattamenti
+            Autori, fonti, licenze e adattamenti
           </a>
           .
         </p>

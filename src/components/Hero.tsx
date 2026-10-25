@@ -5,6 +5,24 @@ import { getSections } from "@/lib/site-utils";
 export default function Hero({ data }: { data: SiteData }) {
   const original = data.businessInfo.name === "Osteria Fenicio";
   const sections = getSections(data);
+  const photo =
+    data.businessInfo.type === "bakery"
+      ? {
+          src: "/photos/demo/cornetto.webp",
+          alt: "Cornetto sfogliato ripieno di crema pasticcera",
+          caption: "Il piacere di una colazione",
+        }
+      : !original && data.businessInfo.type === "pizzeria"
+        ? {
+            src: "/photos/pizza.webp",
+            alt: "Pizza Margherita con pomodoro, mozzarella e basilico",
+            caption: "Una pizza, tutto il suo carattere",
+          }
+        : {
+            src: "/photos/fregola.webp",
+            alt: "Fregola sarda ai frutti di mare, con cozze, vongole e crostacei",
+            caption: "Fregola ai frutti di mare",
+          };
   return (
     <section data-demo-hero className="of-hero" aria-labelledby="hero-title">
       <div className="of-hero__copy">
@@ -63,16 +81,8 @@ export default function Hero({ data }: { data: SiteData }) {
       </div>
       <div className="of-hero__visual" data-parallax>
         <Image
-          src={
-            data.businessInfo.type === "bakery"
-              ? "/photos/tiramisu.webp"
-              : "/photos/fregola.webp"
-          }
-          alt={
-            data.businessInfo.type === "bakery"
-              ? "Una fetta di tiramisù con mascarpone e cacao"
-              : "Fregola sarda ai frutti di mare, con cozze, vongole e crostacei"
-          }
+          src={photo.src}
+          alt={photo.alt}
           fill
           priority
           sizes="(max-width: 800px) 100vw, 53vw"
@@ -86,11 +96,7 @@ export default function Hero({ data }: { data: SiteData }) {
         <div className="of-hero__caption">
           <span>01 / La cucina</span>
           <strong>Il sapore delle cose fatte bene.</strong>
-          <span>
-            {data.businessInfo.type === "bakery"
-              ? "Il piacere di un dolce"
-              : "Fregola ai frutti di mare"}
-          </span>
+          <span>{photo.caption}</span>
         </div>
       </div>
       <div className="of-hero__foot">

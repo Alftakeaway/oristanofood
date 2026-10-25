@@ -7,6 +7,7 @@ export const samples = {
     products: [
       {
         id: "demo-antipasto",
+        imageUrl: "/photos/demo/tagliere.webp",
         title: "Tagliere del territorio",
         price: 12,
         description: "Formaggi, salumi e pane croccante.",
@@ -15,6 +16,7 @@ export const samples = {
       },
       {
         id: "demo-primo",
+        imageUrl: "/photos/demo/malloreddus.webp",
         title: "Malloreddus al pomodoro",
         price: 14,
         description: "Pasta di semola, pomodoro e pecorino.",
@@ -23,6 +25,7 @@ export const samples = {
       },
       {
         id: "demo-secondo",
+        imageUrl: "/photos/demo/orata.webp",
         title: "Orata al forno",
         price: 21,
         description: "Pesce al forno con patate ed erbe.",
@@ -31,6 +34,7 @@ export const samples = {
       },
       {
         id: "demo-dessert",
+        imageUrl: "/photos/seadas.webp",
         title: "Seadas al miele",
         price: 7,
         description: "Sfoglia croccante e cuore di formaggio.",
@@ -47,6 +51,7 @@ export const samples = {
     products: [
       {
         id: "demo-margherita",
+        imageUrl: "/photos/pizza.webp",
         title: "Margherita",
         price: 8,
         description: "Pomodoro, fiordilatte e basilico.",
@@ -55,6 +60,7 @@ export const samples = {
       },
       {
         id: "demo-diavola",
+        imageUrl: "/photos/demo/diavola.webp",
         title: "Diavola",
         price: 10,
         description: "Pomodoro, mozzarella e salame piccante.",
@@ -63,6 +69,7 @@ export const samples = {
       },
       {
         id: "demo-ortolana",
+        imageUrl: "/photos/demo/ortolana.webp",
         title: "Ortolana",
         price: 10,
         description: "Pomodoro e verdure di stagione, senza formaggio.",
@@ -71,6 +78,7 @@ export const samples = {
       },
       {
         id: "demo-tiramisu",
+        imageUrl: "/photos/tiramisu.webp",
         title: "Tiramisù",
         price: 6,
         description: "Caffè, mascarpone e savoiardi.",
@@ -87,6 +95,7 @@ export const samples = {
     products: [
       {
         id: "demo-cornetto",
+        imageUrl: "/photos/demo/cornetto.webp",
         title: "Cornetto alla crema",
         price: 2.5,
         description: "Sfoglia al burro e crema alla vaniglia.",
@@ -95,6 +104,7 @@ export const samples = {
       },
       {
         id: "demo-pardula",
+        imageUrl: "/photos/demo/pardula.webp",
         title: "Pardula alla ricotta",
         price: 2,
         description: "Ricotta e zafferano in una piccola sfoglia.",
@@ -103,6 +113,7 @@ export const samples = {
       },
       {
         id: "demo-biscotti",
+        imageUrl: "/photos/demo/amaretti.webp",
         title: "Biscotti alle mandorle",
         price: 6,
         description: "Una confezione di biscotti da condividere.",
@@ -111,6 +122,7 @@ export const samples = {
       },
       {
         id: "demo-torta",
+        imageUrl: "/photos/demo/torta.webp",
         title: "Torta al cioccolato",
         price: 28,
         description: "Torta dimostrativa per sei persone.",

@@ -1,4 +1,6 @@
 import { expect, test } from "vitest";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import assert from "node:assert/strict";
 import raw from "../config/site-data.json";
 import type { SiteData } from "./site-data";
@@ -43,6 +45,13 @@ test("demo changes are isolated, reversible and reject untrusted settings", () =
     assert.equal(example.businessInfo.type, preset);
     assert.equal(example.showcase.length, 4);
     assert.equal(new Set(example.showcase.map((item) => item.id)).size, 4);
+    for (const item of example.showcase) {
+      assert.match(item.imageUrl, /^\/photos\/.+\.(webp|avif|jpe?g|png)$/);
+      assert.ok(
+        existsSync(path.join(process.cwd(), "public", item.imageUrl)),
+        `${preset}: foto mancante per ${item.title}`,
+      );
+    }
     assert.equal(JSON.stringify(base), before);
   }
   const restored = applyDemo(base, emptySettings());

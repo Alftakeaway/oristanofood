@@ -22,7 +22,9 @@ export default function CreditsPage() {
       <ul className="mt-10 space-y-8">
         {credits.map((photo) => (
           <li key={photo.key} className="border-t border-foreground/20 pt-5">
-            <h2 className="font-heading text-2xl capitalize">{photo.key}</h2>
+            <h2 className="font-heading text-2xl capitalize">
+              {photo.key.replace("demo/", "")}
+            </h2>
             <p className="mt-2 text-sm">
               {photo.author} ·{" "}
               <a href={photo.licenseUrl} className="underline">

@@ -54,5 +54,77 @@
     "author": "Unsplash",
     "license": "Unsplash License",
     "licenseUrl": "https://unsplash.com/license"
+  },
+  {
+    "key": "demo/tagliere",
+    "title": "Tagliere toscano.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Tagliere_toscano.jpg",
+    "author": "Albarubescens",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "demo/malloreddus",
+    "title": "Sardo Cucina, Fitzrovia, London (5147126888).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Sardo_Cucina,_Fitzrovia,_London_(5147126888).jpg",
+    "author": "Ewan Munro from London, UK",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+  },
+  {
+    "key": "demo/orata",
+    "title": "Orata al Forno con Patate.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Orata_al_Forno_con_Patate.jpg",
+    "author": "DinaBenedettoFerrandina",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "demo/amaretti",
+    "title": "Amaretti gobeirne.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Amaretti_gobeirne.JPG",
+    "author": "Photograph by Greg O'Beirne",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+    "key": "demo/diavola",
+    "title": "Pizza Diavola (Verde Ischia).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pizza_Diavola_(Verde_Ischia).jpg",
+    "author": "掬茶",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "demo/cornetto",
+    "title": "Cornetto alla crema.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cornetto_alla_crema.jpg",
+    "author": "Lasagnolo9",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "demo/torta",
+    "title": "Chocolate fudge cake.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Chocolate_fudge_cake.jpg",
+    "author": "Tracy Hunter from Kabul,, Afghanistan",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "key": "demo/pardula",
+    "title": "Pardualas Muceli e Lotto.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pardualas_Muceli_e_Lotto.jpg",
+    "author": "In21giorni",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "demo/ortolana",
+    "title": "Vegan pizza in Vorokhta, Ukraine.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Vegan_pizza_in_Vorokhta,_Ukraine.jpg",
+    "author": "Anna Korcheva",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   }
 ]
