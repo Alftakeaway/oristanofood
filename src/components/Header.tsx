@@ -1,85 +1,112 @@
-import type { BusinessInfo, SectionFlags } from '@/lib/site-data';
-import { getPhoneHref } from '@/lib/site-utils';
-import type { OpenStatus } from '@/lib/open-status';
-import OpenStatusBadge from '@/components/OpenStatusBadge';
+"use client";
 
-const NAV_ITEMS: Array<{ key: keyof SectionFlags; href: string; label: string }> = [
-  { key: 'menu', href: '#menu', label: 'Menù' },
-  { key: 'pizza', href: '#pizza', label: 'Pizza' },
-  { key: 'showcase', href: '#showcase', label: 'Specialità' },
-  { key: 'wine', href: '#vini', label: 'Vini' },
-  { key: 'services', href: '#servizi', label: 'Servizi' },
-  { key: 'allergens', href: '#allergeni', label: 'Allergeni' },
-  { key: 'booking', href: '#prenota', label: 'Prenota' },
-];
+import { useEffect, useRef, useState } from "react";
+import type { BusinessInfo, SectionFlags } from "@/lib/site-data";
+import type { OpenStatus } from "@/lib/open-status";
+import OpenStatusBadge from "./OpenStatusBadge";
+import { MotionToggle } from "./Experience";
 
-interface HeaderProps {
+const navigation = [
+  { key: "showcase", href: "#showcase", label: "La cucina" },
+  { key: "menu", href: "#menu", label: "Menù" },
+  { key: "pizza", href: "#pizza", label: "La pizza" },
+  { key: "wine", href: "#vini", label: "La cantina" },
+  { key: "booking", href: "#prenota", label: "Prenota" },
+] as const;
+
+export default function Header({
+  businessInfo,
+  status,
+  sections,
+}: {
   businessInfo: BusinessInfo;
   status: OpenStatus;
   sections: SectionFlags;
-}
+}) {
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const nav = navigation.filter((item) => sections[item.key]);
 
-export default function Header({ businessInfo, status, sections }: HeaderProps) {
-  const nav = NAV_ITEMS.filter((item) => sections[item.key]);
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", dismiss);
+    return () => window.removeEventListener("keydown", dismiss);
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
-        <div className="flex min-w-0 items-center gap-3">
-          <img
-            src={businessInfo.logo}
-            alt={businessInfo.name}
-            className="h-10 w-10 rounded-xl"
-          />
-          <div className="min-w-0">
-            <span className="block truncate font-heading text-lg font-semibold leading-tight">
-              {businessInfo.name}
-            </span>
-            <span className="hidden text-xs text-muted md:block">
-              {businessInfo.tagline}
-            </span>
-          </div>
-        </div>
-
-        <nav className="hidden items-center gap-5 text-[13px] font-medium lg:flex">
+    <header className="of-header">
+      <div className="of-header__inner">
+        <a
+          href="/"
+          className="of-brand"
+          aria-label={`${businessInfo.name} — home`}
+        >
+          <img src={businessInfo.logo} alt="" width="40" height="40" />
+          <span>{businessInfo.name}</span>
+        </a>
+        <nav className="of-nav" aria-label="Navigazione principale">
           {nav.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              className="whitespace-nowrap transition hover:text-primary"
-            >
+            <a key={item.href} href={item.href}>
               {item.label}
             </a>
           ))}
-          <a href="#info" className="whitespace-nowrap transition hover:text-primary">
-            Info
-          </a>
+          <a href="#info">Dove siamo</a>
         </nav>
-
-        <div className="flex items-center gap-3">
-          <OpenStatusBadge initial={status} />
+        <div className="of-header__tools">
+          <div className="of-header__status">
+            <OpenStatusBadge initial={status} />
+          </div>
+          <MotionToggle />
           <a
-            href={getPhoneHref(businessInfo.phone)}
-            className="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-semibold whitespace-nowrap text-white transition hover:brightness-110 sm:px-5 sm:py-2 sm:text-sm"
+            className="of-header__book"
+            href={sections.booking ? "#prenota" : "#info"}
           >
-            <span className="sm:hidden">Chiama</span>
-            <span className="hidden sm:inline">Chiama Ora</span>
+            {sections.booking ? "A tavola ↗" : "Contatti ↗"}
           </a>
+          <button
+            ref={toggle}
+            type="button"
+            className="of-menu-toggle"
+            aria-label={open ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? "×" : "☰"}
+          </button>
         </div>
       </div>
-
       <nav
-        aria-label="Sezioni del sito"
-        className="flex gap-5 overflow-x-auto border-t border-foreground/5 px-4 py-2 text-xs font-medium lg:hidden"
+        id="mobile-navigation"
+        className="of-mobile-nav"
+        aria-label="Navigazione mobile"
+        hidden={!open}
       >
         {nav.map((item) => (
-          <a key={item.key} href={item.href} className="shrink-0 whitespace-nowrap transition hover:text-primary">
+          <a href={item.href} key={item.href} onClick={() => setOpen(false)}>
             {item.label}
+            <span aria-hidden="true">↗</span>
           </a>
         ))}
-        <a href="#info" className="shrink-0 whitespace-nowrap transition hover:text-primary">
-          Info &amp; Orari
+        <a href="#info" onClick={() => setOpen(false)}>
+          Dove siamo ↗
         </a>
+        {sections.services && (
+          <a href="#servizi" onClick={() => setOpen(false)}>
+            Servizi
+          </a>
+        )}
+        {sections.allergens && (
+          <a href="#allergeni" onClick={() => setOpen(false)}>
+            Allergeni
+          </a>
+        )}
       </nav>
     </header>
   );

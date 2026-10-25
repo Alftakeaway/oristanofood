@@ -90,3 +90,18 @@ La CTA commerciale persistente apre una bozza email a alfredoforte.web@gmail.com
 L'invito compare dopo una personalizzazione completata oppure alla chiusura del pannello dopo tre prezzi distinti modificati. Non compare all'ingresso. Si può chiudere per il resto della sessione.
 
 Il pannello permette di indicare email o WhatsApp per essere ricontattati e prepara una richiesta a alfredoforte.web@gmail.com. L'invio richiede l'app email del visitatore; nessun messaggio viene spedito dal sito. Il recapito resta nello stato temporaneo del pannello, viene cancellato alla chiusura e non viene inserito nel link demo o in localStorage. È disponibile la copia manuale del testo.
+
+## Refactoring Fenicio — ottobre 2026
+
+La home usa una composizione editoriale, fotografie reali in `public/photos/`,
+una selezione fotografica distinta dal menu completo e un filtro per portata.
+Menu, prezzi, carrello, prenotazione e personalizzazione demo restano nello
+stesso stack Next.js / Tailwind.
+
+Le animazioni usano CSS, IntersectionObserver e un aggiornamento dello scroll
+tramite requestAnimationFrame. Il controllo nell'intestazione mette in pausa
+il movimento; `prefers-reduced-motion` è rispettato senza nascondere contenuti.
+
+Crediti e licenze delle fotografie sono in `docs/PHOTO-CREDITS.json` e nella
+pagina pubblica `/crediti`. Le foto sono illustrative e non ritraggono un locale
+reale associato alla demo.

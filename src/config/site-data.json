@@ -27,16 +27,16 @@
   },
   "styles": {
     "colors": {
-      "primary": "#7A2E1D",
-      "secondary": "#2F4A3C",
-      "accent": "#D9A441",
-      "background": "#FBF7F0",
-      "surface": "#FFFFFF",
-      "foreground": "#221A16",
-      "muted": "#7A6C62"
+      "primary": "#a54428",
+      "secondary": "#665a43",
+      "accent": "#c38b55",
+      "background": "#f5f0e7",
+      "surface": "#eee7dc",
+      "foreground": "#29251f",
+      "muted": "#72685b"
     },
     "fonts": {
-      "heading": "Playfair Display",
+      "heading": "Cormorant Garamond",
       "body": "Inter"
     }
   },
@@ -378,7 +378,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "carciofi-alla-sarda",
@@ -401,7 +401,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "datterini-bocconchini",
@@ -421,7 +421,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "fregola-frutti-di-mare",
@@ -429,10 +429,8 @@
       "description": "Fregola tostata, vongole veraci, cozze e gamberi con fumetto di pesce e bottarga.",
       "price": 16,
       "category": "Primi",
-      "imageUrl": "/placeholders/primi.svg",
-      "images": [
-        "/placeholders/primi.svg"
-      ],
+      "imageUrl": "/photos/fregola.webp",
+      "images": [],
       "ingredients": [
         "fregola",
         "vongole",
@@ -471,7 +469,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "lorighittas-ragu-agnello",
@@ -494,7 +492,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "grigliata-di-pesce",
@@ -519,7 +517,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "maialetto-cannonau",
@@ -541,7 +539,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "fritto-misto-di-mare",
@@ -565,7 +563,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": false,
-      "feature": true
+      "feature": false
     },
     {
       "id": "seadas-miele",
@@ -573,7 +571,7 @@
       "description": "Ravioloni di pecorino fresco fritti, miele amaro di corbezzolo e zeste di limone.",
       "price": 7,
       "category": "Dolci",
-      "imageUrl": "/placeholders/dolci.svg",
+      "imageUrl": "/photos/seadas.webp",
       "ingredients": [
         "pasta all'uovo",
         "pecorino fresco",
@@ -587,7 +585,8 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": true,
+      "images": []
     },
     {
       "id": "torta-mandorle-arancia",
@@ -610,7 +609,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "panna-cotta-mirto",
@@ -632,7 +631,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "margherita-dop",
@@ -640,10 +639,8 @@
       "description": "Fior di latte di Agerola D.O.P., pomodoro San Marzano, basilico e olio EVO.",
       "price": 7.5,
       "category": "Pizze Classiche",
-      "imageUrl": "/placeholders/pizza.svg",
-      "images": [
-        "/placeholders/pizza.svg"
-      ],
+      "imageUrl": "/photos/pizza.webp",
+      "images": [],
       "ingredients": [
         "fior di latte D.O.P.",
         "San Marzano",
@@ -678,7 +675,7 @@
       "glutenFree": false,
       "vegan": true,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "pizza-sarda",
@@ -700,7 +697,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "diavola",
@@ -721,7 +718,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "fenicia-gambero-rosso",
@@ -745,7 +742,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "quattro-formaggi-sg",
@@ -767,7 +764,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "ortolana-vegana",
@@ -790,7 +787,7 @@
       "glutenFree": false,
       "vegan": true,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "burrata-prosciutto-villagrande",
@@ -815,7 +812,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "cozze-marinara-crostoni",
@@ -840,7 +837,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "culurgiones-sugo-pecorino",
@@ -866,7 +863,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "spaghetti-ricci-di-mare",
@@ -891,7 +888,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "orata-isolana-forno",
@@ -915,7 +912,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "agnello-agrodolce-carciofi",
@@ -937,7 +934,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "tiramisu-ogliastra",
@@ -945,10 +942,8 @@
       "description": "Tiramisù classico con caffè tostato in Ogliastra e cacao amaro.",
       "price": 6.5,
       "category": "Dolci",
-      "imageUrl": "/placeholders/dolci.svg",
-      "images": [
-        "/placeholders/dolci.svg"
-      ],
+      "imageUrl": "/photos/tiramisu.webp",
+      "images": [],
       "ingredients": [
         "mascarpone",
         "caffè",
@@ -984,7 +979,7 @@
       "glutenFree": true,
       "vegan": true,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "capricciosa",
@@ -1011,7 +1006,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "tonno-cipolla-tropea",
@@ -1037,7 +1032,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "bufalina-rucola-pachino",
@@ -1062,7 +1057,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "tagliere-formaggi-sardi",
@@ -1088,7 +1083,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "zuppa-gallurese",
@@ -1112,7 +1107,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "porceddu-forno",
@@ -1133,7 +1128,7 @@
       "glutenFree": true,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "pardulas-ricotta",
@@ -1159,7 +1154,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "quattro-stagioni",
@@ -1186,7 +1181,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     },
     {
       "id": "parmigiana-melanzane",
@@ -1211,7 +1206,7 @@
       "glutenFree": false,
       "vegan": false,
       "available": true,
-      "feature": true
+      "feature": false
     }
   ]
 }

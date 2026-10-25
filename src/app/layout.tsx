@@ -25,6 +25,14 @@ export async function generateMetadata(): Promise<Metadata> {
       url: resolveBaseUrl(),
       type: "website",
       locale: "it_IT",
+      images: [
+        {
+          url: "/photos/fregola.webp",
+          width: 1600,
+          height: 1200,
+          alt: "Fregola ai frutti di mare — Osteria Fenicio",
+        },
+      ],
     },
   };
 }
@@ -59,6 +67,9 @@ export default async function RootLayout({
         className={`${headingFont.variable} ${bodyFont.variable} antialiased`}
         style={cssVars}
       >
+        <a href="#main-content" className="of-skip">
+          Salta al contenuto
+        </a>
         <DemoProvider base={data} renderedAt={new Date().toISOString()}>
           {children}
         </DemoProvider>

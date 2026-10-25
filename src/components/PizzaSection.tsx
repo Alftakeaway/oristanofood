@@ -1,9 +1,14 @@
-'use client';
+"use client";
 
-import type { PizzaConfig, ShowcaseItem } from '@/lib/site-data';
-import { formatPrice } from '@/lib/format';
-import { AddToCartButton } from '@/components/cart';
-import { DietFilterBar, matchesDiet, useDietFilter } from '@/components/diet-filter';
+import type { PizzaConfig, ShowcaseItem } from "@/lib/site-data";
+import { formatPrice } from "@/lib/format";
+import { AddToCartButton } from "@/components/cart";
+import {
+  DietFilterBar,
+  matchesDiet,
+  useDietFilter,
+} from "@/components/diet-filter";
+import Image from "next/image";
 
 interface PizzaSectionProps {
   items: ShowcaseItem[];
@@ -13,35 +18,59 @@ interface PizzaSectionProps {
 export default function PizzaSection({ items, config }: PizzaSectionProps) {
   const { diet } = useDietFilter();
 
-  const pizzas = items.filter((item) => config.categories.includes(item.category));
+  const pizzas = items.filter((item) =>
+    config.categories.includes(item.category),
+  );
   if (pizzas.length === 0) return null;
 
   const groups = config.categories
     .map((category) => ({
       category,
-      rows: pizzas.filter((item) => item.category === category && matchesDiet(item, diet)),
+      rows: pizzas.filter(
+        (item) => item.category === category && matchesDiet(item, diet),
+      ),
     }))
     .filter((group) => group.rows.length > 0);
 
   return (
-    <section id="pizza" className="border-y border-foreground/5 bg-background/60 py-20">
+    <section
+      id="pizza"
+      className="border-y border-foreground/5 bg-background/60 py-20 of-pizza"
+    >
       <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <h2 className="font-heading text-3xl font-medium md:text-4xl">La pizza</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{config.doughNote}</p>
+        <div className="of-pizza__intro">
+          <div className="of-pizza__photo" data-reveal>
+            <Image
+              src="/photos/pizza.webp"
+              alt="Pizza Margherita cotta in forno con pomodoro, mozzarella e basilico"
+              fill
+              sizes="(max-width: 800px) 100vw, 45vw"
+            />
           </div>
-          <DietFilterBar />
+          <div
+            className="flex flex-wrap items-end justify-between gap-6"
+            data-reveal
+          >
+            <div>
+              <p className="of-eyebrow">Il forno / 03</p>
+              <h2 className="font-heading text-3xl font-medium md:text-4xl">
+                Il tempo è il primo ingrediente.
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+                {config.doughNote}
+              </p>
+            </div>
+            <DietFilterBar />
+          </div>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {config.styles.map((style) => (
-            <div
-              key={style.name}
-              className="rounded-xl border border-foreground/10 bg-surface p-4"
-            >
+            <div key={style.name} className="of-pizza__style">
               <h3 className="font-heading text-lg font-medium">{style.name}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted">{style.description}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted">
+                {style.description}
+              </p>
             </div>
           ))}
         </div>
@@ -49,7 +78,9 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
         <div className="mt-12 grid gap-x-14 gap-y-12 md:grid-cols-2">
           {groups.map((group) => (
             <div key={group.category}>
-              <h3 className="font-heading text-2xl text-primary">{group.category}</h3>
+              <h3 className="font-heading text-2xl text-primary">
+                {group.category}
+              </h3>
               <ul className="mt-4 space-y-6">
                 {group.rows.map((item) => (
                   <li key={item.id}>
@@ -57,8 +88,8 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
                       <span
                         className={
                           item.available
-                            ? 'font-medium'
-                            : 'font-medium text-muted line-through decoration-foreground/30'
+                            ? "font-medium"
+                            : "font-medium text-muted line-through decoration-foreground/30"
                         }
                       >
                         {item.title}
@@ -93,7 +124,7 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
                     </div>
                     {(item.ingredients?.length ?? 0) > 0 && (
                       <p className="mt-1 text-sm text-muted">
-                        {item.ingredients?.join(', ')}
+                        {item.ingredients?.join(", ")}
                       </p>
                     )}
                     {item.description && (
@@ -115,12 +146,19 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
               {config.extras?.map((extra) => (
                 <li key={extra.name} className="flex items-baseline gap-3">
                   <span>{extra.name}</span>
-                  <span aria-hidden="true" className="flex-1 border-b border-dotted border-foreground/25" />
-                  <span className="font-medium">{formatPrice(extra.price)}</span>
+                  <span
+                    aria-hidden="true"
+                    className="flex-1 border-b border-dotted border-foreground/25"
+                  />
+                  <span className="font-medium">
+                    {formatPrice(extra.price)}
+                  </span>
                 </li>
               ))}
             </ul>
-            {config.note && <p className="mt-4 text-xs text-muted">{config.note}</p>}
+            {config.note && (
+              <p className="mt-4 text-xs text-muted">{config.note}</p>
+            )}
           </div>
         )}
       </div>

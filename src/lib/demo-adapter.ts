@@ -19,7 +19,17 @@ export function applyDemo(base: SiteData, settings: DemoSettings): SiteData {
     data.showcase = sample.products.map((item) => ({
       ...item,
       category: categoryLabels[item.category],
-      imageUrl: `/placeholders/${item.category === "pizze" ? "pizza" : ["antipasti", "primi", "secondi", "dolci"].includes(item.category) ? item.category : "dolci"}.svg`,
+      imageUrl:
+        (
+          {
+            "demo-margherita": "/photos/pizza.webp",
+            "demo-tiramisu": "/photos/tiramisu.webp",
+            ...(settings.preset === "restaurant"
+              ? { "demo-dessert": "/photos/seadas.webp" }
+              : {}),
+          } as Record<string, string>
+        )[item.id] ??
+        `/placeholders/${item.category === "pizze" ? "pizza" : ["antipasti", "primi", "secondi", "dolci"].includes(item.category) ? item.category : "dolci"}.svg`,
       feature: true,
       available: true,
       vegan: item.id === "demo-ortolana",

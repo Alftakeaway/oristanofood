@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function PrivacyPage() {
   if (DEMO_MODE)
     return (
-      <main className="mx-auto max-w-3xl px-4 py-16 space-y-6">
+      <main id="main-content" className="mx-auto max-w-3xl px-4 py-16 space-y-6">
         <Link href="/" className="underline">
           Torna alla demo
         </Link>

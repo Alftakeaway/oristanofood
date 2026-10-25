@@ -1,116 +1,78 @@
-'use client';
-
-import type { ShowcaseItem } from '@/lib/site-data';
-import ProductGallery from '@/components/ProductGallery';
-import { AddToCartButton } from '@/components/cart';
-import { DietFilterBar, matchesDiet, useDietFilter } from '@/components/diet-filter';
-
-interface CategoryGroup {
-  category: string;
-  items: ShowcaseItem[];
-}
+"use client";
+import type { ShowcaseItem } from "@/lib/site-data";
+import ProductGallery from "./ProductGallery";
+import { AddToCartButton } from "./cart";
+import { DietFilterBar, matchesDiet, useDietFilter } from "./diet-filter";
 
 export default function ShowcaseGrid({
   items,
-  heading = 'Le specialità',
-  id = 'showcase',
+  heading = "Il gusto di essere qui.",
+  id = "showcase",
 }: {
   items: ShowcaseItem[];
   heading?: string;
   id?: string;
 }) {
   const { diet } = useDietFilter();
-
-  if (items.length === 0) return null;
-
+  if (!items.length) return null;
   const filtered = items.filter((item) => matchesDiet(item, diet));
-
-  const groups: CategoryGroup[] = [];
-  for (const item of filtered) {
-    const existing = groups.find((group) => group.category === item.category);
-    if (existing) {
-      existing.items.push(item);
-    } else {
-      groups.push({ category: item.category, items: [item] });
-    }
-  }
-
   return (
-    <section id={id} className="py-20">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="font-heading text-3xl font-medium md:text-4xl">{heading}</h2>
+    <section id={id} className="of-specialties">
+      <div className="of-container">
+        <div className="of-section-head" data-reveal>
+          <div>
+            <p className="of-eyebrow">Dalla nostra cucina / 01</p>
+            <h2>{heading}</h2>
+            <p>Un assaggio della carta, dal primo boccone al dolce.</p>
+          </div>
           <DietFilterBar />
         </div>
-
-        {filtered.length === 0 ? (
-          <p className="mt-10 text-muted">Nessun prodotto corrisponde al filtro selezionato.</p>
-        ) : (
-          groups.map((group, index) => (
-            <div key={group.category} className={index === 0 ? 'mt-8' : 'mt-16'}>
-              <h3 className="font-heading text-3xl font-medium md:text-4xl">{group.category}</h3>
-              <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {group.items.map((item) => (
-                  <article
-                    key={item.id}
-                    className="group flex flex-col overflow-hidden rounded-2xl border border-foreground/5 bg-surface shadow-sm transition hover:shadow-md"
-                  >
-                    <ProductGallery
-                      title={item.title}
-                      imageUrl={item.imageUrl}
-                      images={item.images}
-                      price={item.price}
-                      available={item.available}
-                    />
-                    <div className={`flex flex-1 flex-col p-5 ${item.available ? '' : 'opacity-70'}`}>
-                      <h3 className="font-heading text-xl">{item.title}</h3>
-                      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
-                        {item.description}
-                      </p>
-                      {(item.glutenFree || item.vegan) && (
-                        <div className="mt-3 flex flex-wrap gap-1.5">
-                          {item.glutenFree && (
-                            <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-secondary">
-                              Senza glutine
-                            </span>
-                          )}
-                          {item.vegan && (
-                            <span className="rounded-full bg-secondary/10 px-2.5 py-0.5 text-xs font-medium text-secondary">
-                              Vegano
-                            </span>
-                          )}
-                        </div>
-                      )}
-                      {item.allergens.length > 0 && (
-                        <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Allergeni">
-                          {item.allergens.map((allergen) => (
-                            <li
-                              key={allergen}
-                              className="rounded-full bg-background px-2.5 py-0.5 text-xs text-muted"
-                            >
-                              {allergen}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      <div className="mt-auto pt-4">
-                        <AddToCartButton
-                          item={{
-                            id: item.id,
-                            title: item.title,
-                            price: item.price,
-                            imageUrl: item.imageUrl,
-                            available: item.available,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </article>
-                ))}
+        <div className="of-dish-grid">
+          {filtered.map((item, index) => (
+            <article key={item.id} className="of-dish group" data-reveal>
+              <div className="of-dish__number" aria-hidden="true">
+                0{index + 1}
+                <span>{item.category}</span>
               </div>
-            </div>
-          ))
+              <ProductGallery
+                title={item.title}
+                imageUrl={item.imageUrl}
+                images={item.images}
+                price={item.price}
+                available={item.available}
+              />
+              <div className="of-dish__body">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div className="of-dish__tags">
+                  {item.glutenFree && <span>Senza glutine</span>}
+                  {item.vegan && <span>Vegano</span>}
+                  <span>
+                    Allergeni: {item.allergens.join(", ") || "nessuno indicato"}
+                  </span>
+                </div>
+                <AddToCartButton
+                  item={{
+                    id: item.id,
+                    title: item.title,
+                    price: item.price,
+                    imageUrl: item.imageUrl,
+                    available: item.available,
+                  }}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+        {!filtered.length && (
+          <p role="status" className="of-empty">
+            Nessuna specialità corrisponde al filtro. Scegli “Tutti” per
+            rivedere la selezione.
+          </p>
         )}
+        <a href="#menu" className="of-text-link of-specialties__more">
+          Tutta la carta, piatto per piatto ↗
+        </a>
       </div>
     </section>
   );

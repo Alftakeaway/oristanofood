@@ -1,0 +1,58 @@
+[
+  {
+    "key": "fregola",
+    "title": "Fregola ai frutti di mare (IMG 20260515 203730).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Fregola_ai_frutti_di_mare_(IMG_20260515_203730).jpg",
+    "author": "Simon Legner (User:simon04)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "culurgiones",
+    "title": "Culurgione.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Culurgione.jpg",
+    "author": "andria",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+  },
+  {
+    "key": "seadas",
+    "title": "SeadasCA.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:SeadasCA.jpg",
+    "author": "Pietro Di Fontana",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "key": "tiramisu",
+    "title": "Tiramisu - Raffaele Diomede.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Tiramisu_-_Raffaele_Diomede.jpg",
+    "author": "Raffaele Diomede from Pordenone, ITALIA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "key": "pizza",
+    "source": "https://unsplash.com",
+    "photoId": "photo-1604068549290-dea0e4a305ca",
+    "author": "Unsplash",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license"
+  },
+  {
+    "key": "vino",
+    "source": "https://unsplash.com",
+    "photoId": "photo-1510812431401-41d2bd2722f3",
+    "author": "Unsplash",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license"
+  },
+  {
+    "key": "sala",
+    "source": "https://unsplash.com",
+    "photoId": "photo-1517248135467-4c7edcad34c4",
+    "author": "Unsplash",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license"
+  }
+]

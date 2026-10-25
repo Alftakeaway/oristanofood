@@ -1,6 +1,8 @@
 "use client";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Experience, { KineticBand } from "@/components/Experience";
+import Editorial, { Atmosphere } from "@/components/Editorial";
 import ShowcaseGrid from "@/components/ShowcaseGrid";
 import MenuSection from "@/components/MenuSection";
 import PizzaSection from "@/components/PizzaSection";
@@ -53,41 +55,36 @@ export default function DemoHome() {
   const featured = data.showcase.filter((item) => item.feature);
   const showcaseItems = featured.length > 0 ? featured : kitchenItems;
 
-  const menuCourses = (data.courses ?? []).filter((course) =>
-    kitchenItems.some((item) => item.category === course.category),
-  );
-  const grouped = (items: typeof data.showcase) =>
-    items.reduce<Array<{ category: string; items: typeof data.showcase }>>(
-      (acc, item) => {
-        const existing = acc.find(
-          (section) => section.category === item.category,
-        );
-        if (existing) {
-          existing.items.push(item);
-        } else {
-          acc.push({ category: item.category, items: [item] });
-        }
-        return acc;
-      },
-      [],
-    );
-  const menuSections = menuCourses.map((course) => ({
-    label: course.label ?? course.category,
-    items: kitchenItems.filter((item) => item.category === course.category),
-  }));
-
   return (
     <>
       <CartProvider key={`${settings.preset}:${resetId}`}>
         <DietFilterProvider key={`${settings.preset}:${resetId}`}>
+          <Experience />
           <Header
             businessInfo={data.businessInfo}
             status={status}
             sections={sections}
           />
           <NoticeBanner exception={exception} />
-          <main>
+          <main id="main-content">
             <Hero data={data} />
+            <KineticBand
+              text={
+                settings.preset === "original"
+                  ? "Terra. Mare. Forno. Fatto a mano."
+                  : data.businessInfo.tagline
+              }
+            />
+            {sections.showcase && <ShowcaseGrid items={showcaseItems} />}
+            {settings.preset === "original" && <Editorial />}
+            {sections.menu && (
+              <MenuSection items={kitchenItems} courses={data.courses ?? []} />
+            )}
+            {sections.pizza && data.pizza && pizzaItems.length > 0 && (
+              <PizzaSection items={data.showcase} config={data.pizza} />
+            )}
+            {sections.wine && data.wine && <WineSection wine={data.wine} />}
+            {settings.preset === "original" && <Atmosphere />}
             {sections.booking && data.booking && (
               <BookingSection
                 businessInfo={data.businessInfo}
@@ -96,14 +93,6 @@ export default function DemoHome() {
                 config={data.booking}
               />
             )}
-            {sections.menu && (
-              <MenuSection items={kitchenItems} courses={data.courses ?? []} />
-            )}
-            {sections.pizza && data.pizza && pizzaItems.length > 0 && (
-              <PizzaSection items={data.showcase} config={data.pizza} />
-            )}
-            {sections.showcase && <ShowcaseGrid items={showcaseItems} />}
-            {sections.wine && data.wine && <WineSection wine={data.wine} />}
             {sections.services && data.services && (
               <ServicesSection services={data.services} />
             )}
