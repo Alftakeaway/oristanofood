@@ -1,9 +1,11 @@
+
+import {LocalizedContent} from "@/i18n";
 import type { ServiceItem } from '@/lib/site-data';
 
 export default function ServicesSection({ services }: { services: ServiceItem[] }) {
   if (services.length === 0) return null;
 
-  return (
+  return <LocalizedContent>{(
     <section id="servizi" className="border-y border-foreground/5 bg-background/60 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-heading text-3xl font-medium md:text-4xl">Servizi e informazioni</h2>
@@ -37,5 +39,5 @@ export default function ServicesSection({ services }: { services: ServiceItem[] 
         </ul>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import {
   createContext,
@@ -78,7 +80,7 @@ export function DemoProvider({
       ...current,
       items: { ...current.items, [id]: { ...current.items[id], ...next } },
     }));
-  return (
+  return <LocalizedContent>{(
     <Context.Provider value={{ config, settings, now, resetId, preview }}>
       <div
         id="demo-contact"
@@ -246,5 +248,5 @@ export function DemoProvider({
         )}
       </div>
     </Context.Provider>
-  );
+  )}</LocalizedContent>;
 }

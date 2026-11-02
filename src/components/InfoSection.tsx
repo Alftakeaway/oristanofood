@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import type { SiteData } from '@/lib/site-data';
 import {
   formatAddress,
@@ -16,7 +18,7 @@ export default function InfoSection({ data }: InfoSectionProps) {
   const { businessInfo } = data;
   const today: DayKey = getTodayKey(businessInfo.timezone);
 
-  return (
+  return <LocalizedContent>{(
     <section id="info" className="py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-heading text-3xl font-medium md:text-4xl">
@@ -86,5 +88,5 @@ export default function InfoSection({ data }: InfoSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

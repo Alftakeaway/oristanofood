@@ -1,4 +1,7 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
+import {LanguageSwitcher} from "@/i18n";
 
 import { useEffect, useRef, useState } from "react";
 import type { BusinessInfo, SectionFlags } from "@/lib/site-data";
@@ -39,7 +42,7 @@ export default function Header({
     return () => window.removeEventListener("keydown", dismiss);
   }, [open]);
 
-  return (
+  return <LocalizedContent>{(
     <header className="of-header">
       <div className="of-header__inner">
         <a
@@ -63,6 +66,7 @@ export default function Header({
             <OpenStatusBadge initial={status} />
           </div>
           <MotionToggle />
+          <LanguageSwitcher/>
           <a
             className="of-header__book"
             href={sections.booking ? "#prenota" : "#info"}
@@ -109,5 +113,5 @@ export default function Header({
         )}
       </nav>
     </header>
-  );
+  )}</LocalizedContent>;
 }

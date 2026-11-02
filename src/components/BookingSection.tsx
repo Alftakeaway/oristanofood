@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import { useMemo, useState } from "react";
 import { DEMO_MODE } from "@/lib/demo-mode";
@@ -64,7 +66,7 @@ export default function BookingSection({
     buildBookingMessage({ date, time: selectedTime, party, name, notes }),
   );
 
-  return (
+  return <LocalizedContent>{(
     <section id="prenota" className="py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -265,5 +267,5 @@ export default function BookingSection({
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

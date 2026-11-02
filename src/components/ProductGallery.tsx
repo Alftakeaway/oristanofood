@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import { useRef, useState } from "react";
 import Image from "next/image";
@@ -27,7 +29,7 @@ export default function ProductGallery({
   const openButton = useRef<HTMLButtonElement>(null);
   const current = shots[active] ?? imageUrl;
 
-  return (
+  return <LocalizedContent>{(
     <div
       className="of-product-media relative aspect-[4/3] overflow-hidden"
       data-loaded={loaded === current}
@@ -134,5 +136,5 @@ export default function ProductGallery({
         </div>
       </dialog>
     </div>
-  );
+  )}</LocalizedContent>;
 }

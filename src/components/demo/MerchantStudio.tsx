@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 import { useRef, useState } from "react";
 import type { DemoSettings } from "../../lib/demo-settings";
 import { demoLink } from "../../lib/demo-share";
@@ -50,7 +52,7 @@ export default function MerchantStudio({
       setBusy("");
     }
   }
-  return (
+  return <LocalizedContent>{(
     <>
       <section
         className="merchant-proposal"
@@ -270,5 +272,5 @@ export default function MerchantStudio({
         </a>
       </dialog>
     </>
-  );
+  )}</LocalizedContent>;
 }

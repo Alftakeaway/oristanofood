@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 import { useEffect, useState } from "react";
 
 export function MotionToggle() {
@@ -23,7 +25,7 @@ export function MotionToggle() {
       /* Works without storage. */
     }
   }
-  return (
+  return <LocalizedContent>{(
     <button
       type="button"
       className="of-motion-toggle"
@@ -37,7 +39,7 @@ export function MotionToggle() {
       <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
       <span className="of-motion-label">Movimento</span>
     </button>
-  );
+  )}</LocalizedContent>;
 }
 
 export default function Experience() {
@@ -129,7 +131,7 @@ export default function Experience() {
       visual?.removeEventListener("pointermove", move);
     };
   }, []);
-  return <div className="of-reading-progress" aria-hidden="true" />;
+  return <LocalizedContent>{<div className="of-reading-progress" aria-hidden="true" />}</LocalizedContent>;
 }
 
 export function KineticBand({
@@ -137,7 +139,7 @@ export function KineticBand({
 }: {
   text?: string;
 }) {
-  return (
+  return <LocalizedContent>{(
     <div className="of-kinetic" aria-label={text}>
       <div className="of-kinetic__track" aria-hidden="true">
         {[0, 1, 2, 3].map((n) => (
@@ -147,5 +149,5 @@ export function KineticBand({
         ))}
       </div>
     </div>
-  );
+  )}</LocalizedContent>;
 }

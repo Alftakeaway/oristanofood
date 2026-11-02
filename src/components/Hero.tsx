@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import Image from "next/image";
 import type { SiteData } from "@/lib/site-data";
 import { getSections } from "@/lib/site-utils";
@@ -23,7 +25,7 @@ export default function Hero({ data }: { data: SiteData }) {
             alt: "Fregola sarda ai frutti di mare, con cozze, vongole e crostacei",
             caption: "Fregola ai frutti di mare",
           };
-  return (
+  return <LocalizedContent>{(
     <section data-demo-hero className="of-hero" aria-labelledby="hero-title">
       <div className="of-hero__copy">
         <p className="of-eyebrow of-enter">
@@ -106,5 +108,5 @@ export default function Hero({ data }: { data: SiteData }) {
         </a>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

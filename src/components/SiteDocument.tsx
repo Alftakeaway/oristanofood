@@ -1,3 +1,5 @@
+import {localiseMetadata} from "@/i18n/server";
+import {NextLocaleProvider} from '@/i18n/next-provider';
 import { DemoProvider } from "@/components/demo/DemoProvider";
 import { DEMO_MODE } from "@/lib/demo-mode";
 import "@/components/demo/demo.css";
@@ -6,11 +8,11 @@ import type { Metadata } from "next";
 import { resolveBaseUrl } from "@/lib/base-url";
 import { fontRegistry, type FontName } from "@/lib/fonts";
 import { getSiteData } from "@/lib/site-data";
-import "./globals.css";
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const { businessInfo } = await getSiteData();
-  return {
+  return localiseMetadata({
     title: {
       default: `${businessInfo.name} — ${businessInfo.tagline}`,
       template: `%s · ${businessInfo.name}`,
@@ -34,14 +36,15 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-  };
+  }, "/");
 }
 
-export default async function RootLayout({
-  children,
+export default async function SiteDocument({
+  children,language='it',
 }: {
-  children: ReactNode;
+  children: ReactNode;language?: 'it'|'en-GB';
 }) {
+  const locale=language;
   const data = await getSiteData();
   const { colors, fonts } = data.styles;
 
@@ -62,17 +65,17 @@ export default async function RootLayout({
   } as unknown as CSSProperties;
 
   return (
-    <html lang="it">
+    <html lang={locale}>
       <body
         className={`${headingFont.variable} ${bodyFont.variable} antialiased`}
         style={cssVars}
       >
         <a href="#main-content" className="of-skip">
-          Salta al contenuto
+          {locale === 'it' ? 'Salta al contenuto' : 'Skip to content'}
         </a>
-        <DemoProvider base={data} renderedAt={new Date().toISOString()}>
+        <NextLocaleProvider locale={locale}><DemoProvider base={data} renderedAt={new Date().toISOString()}>
           {children}
-        </DemoProvider>
+        </DemoProvider></NextLocaleProvider>
       </body>
     </html>
   );

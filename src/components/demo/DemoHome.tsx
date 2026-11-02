@@ -1,4 +1,7 @@
 "use client";
+import EditorialMotion from "@/components/EditorialMotion";
+import {LocalizedContent} from "@/i18n";
+
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Experience, { KineticBand } from "@/components/Experience";
@@ -55,8 +58,8 @@ export default function DemoHome() {
   const featured = data.showcase.filter((item) => item.feature);
   const showcaseItems = featured.length > 0 ? featured : kitchenItems;
 
-  return (
-    <>
+  return <LocalizedContent>{(
+    <><EditorialMotion/>
       <CartProvider key={`${settings.preset}:${resetId}`}>
         <DietFilterProvider key={`${settings.preset}:${resetId}`}>
           <Experience />
@@ -108,5 +111,5 @@ export default function DemoHome() {
         </DietFilterProvider>
       </CartProvider>
     </>
-  );
+  )}</LocalizedContent>;
 }

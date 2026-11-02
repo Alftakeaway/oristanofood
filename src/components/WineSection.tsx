@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import type { WineConfig } from "@/lib/site-data";
 import { formatPrice } from "@/lib/format";
 import Image from "next/image";
@@ -6,7 +8,7 @@ export default function WineSection({ wine }: { wine: WineConfig }) {
   const groups = wine.groups.filter((group) => group.items.length > 0);
   if (groups.length === 0) return null;
 
-  return (
+  return <LocalizedContent>{(
     <section id="vini" className="py-20 of-wine">
       <div className="mx-auto max-w-6xl px-4">
         <div className="of-wine__intro" data-reveal>
@@ -70,5 +72,5 @@ export default function WineSection({ wine }: { wine: WineConfig }) {
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

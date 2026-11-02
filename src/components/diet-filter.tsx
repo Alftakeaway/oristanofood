@@ -1,4 +1,6 @@
 'use client';
+import {LocalizedContent} from "@/i18n";
+
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 import type { ShowcaseItem } from '@/lib/site-data';
@@ -24,7 +26,7 @@ const DietFilterContext = createContext<DietFilterValue>({
 export function DietFilterProvider({ children }: { children: ReactNode }) {
   const [diet, setDiet] = useState<DietKey>('all');
   const value = useMemo(() => ({ diet, setDiet }), [diet]);
-  return <DietFilterContext.Provider value={value}>{children}</DietFilterContext.Provider>;
+  return <LocalizedContent>{<DietFilterContext.Provider value={value}>{children}</DietFilterContext.Provider>}</LocalizedContent>;
 }
 
 export function useDietFilter(): DietFilterValue {
@@ -38,7 +40,7 @@ export function matchesDiet(item: ShowcaseItem, diet: DietKey): boolean {
 
 export function DietFilterBar() {
   const { diet, setDiet } = useDietFilter();
-  return (
+  return <LocalizedContent>{(
     <div className="flex flex-wrap gap-2" role="group" aria-label="Filtra per dieta">
       {DIET_FILTERS.map((filter) => (
         <button
@@ -56,5 +58,5 @@ export function DietFilterBar() {
         </button>
       ))}
     </div>
-  );
+  )}</LocalizedContent>;
 }

@@ -1,3 +1,8 @@
+import {translate} from "../i18n/copy";
+function exportCopy<T extends string|string[]>(value:T):T {
+ const locale=typeof document!=='undefined' && document.documentElement.lang==='en-GB'?'en-GB':'it';
+ return (Array.isArray(value)?value.map(text=>translate(text,locale)):translate(value as string,locale)) as T;
+}
 import type { DemoSettings } from "./demo-settings";
 import { demoLink } from "./demo-share";
 
@@ -68,12 +73,12 @@ export async function exportQR(name: string, link: string) {
   ctx.fillStyle = "#182b42";
   ctx.textAlign = "center";
   ctx.font = "bold 30px sans-serif";
-  ctx.fillText(name, 420, 55, 760);
+  ctx.fillText(exportCopy(name), 420, 55, 760);
   ctx.drawImage(image, 60, 85, 720, 720);
   ctx.font = "bold 24px sans-serif";
-  ctx.fillText("DEMO · NESSUN ORDINE REALE", 420, 850);
+  ctx.fillText(exportCopy("DEMO · NESSUN ORDINE REALE"), 420, 850);
   ctx.font = "22px sans-serif";
-  ctx.fillText("Scansiona per provare il sito", 420, 893);
+  ctx.fillText(exportCopy("Scansiona per provare il sito"), 420, 893);
   const blob = await new Promise<Blob | null>((resolve) =>
     canvas.toBlob(resolve, "image/png"),
   );
@@ -82,7 +87,7 @@ export async function exportQR(name: string, link: string) {
 }
 // Built-in PDF fonts cover Italian; omit unsupported symbols rather than corrupt text.
 export const pdfText = (text: string) =>
-  text.replace(/[^\u0020-\u00ff\u20ac\n]/gu, "").trim();
+  exportCopy(text).replace(/[’‘]/g,"'").replace(/[^\u0020-\u00ff\u20ac\n]/gu, "").trim();
 export async function exportMenu(
   name: string,
   items: ExportItem[],
@@ -93,8 +98,8 @@ export async function exportMenu(
   const { jsPDF } = await import("jspdf");
   const pdf = new jsPDF({ unit: "mm", format: "a4" });
   pdf.setProperties({
-    title: `${pdfText(name)} - Menu dimostrativo`,
-    subject: "Demo: nessun ordine reale",
+    title: `${pdfText(name)} - ${exportCopy("Menu dimostrativo")}`,
+    subject: exportCopy("Demo: nessun ordine reale"),
   });
   let y = 24;
   function header() {
@@ -102,11 +107,11 @@ export async function exportMenu(
     pdf.setFontSize(19);
     pdf.setTextColor(24, 43, 66);
     const lines = pdf.splitTextToSize(pdfText(name), 174);
-    pdf.text(lines, 18, 20);
+    pdf.text(exportCopy(lines), 18, 20);
     y = 24 + lines.length * 7;
     pdf.setFontSize(10);
     pdf.setFont("helvetica", "normal");
-    pdf.text("Menu dimostrativo - prezzi e disponibilita di esempio", 18, y);
+    pdf.text(exportCopy("Menu dimostrativo - prezzi e disponibilita di esempio"), 18, y);
     y += 12;
   }
   function ensure(height: number) {
@@ -121,17 +126,17 @@ export async function exportMenu(
     ensure(40);
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(13);
-    pdf.text(pdfText(category), 18, y);
+    pdf.text(exportCopy(pdfText(category)), 18, y);
     y += 8;
     for (const item of items.filter((item) => item.category === category)) {
       const title = pdf.splitTextToSize(
-        pdfText(item.name) + (item.available ? "" : " (esaurito)"),
+        pdfText(item.name) + (item.available ? "" : exportCopy(" (esaurito)")),
         130,
       );
       const details = [
-        item.unit,
+        item.unit ? exportCopy(item.unit) : undefined,
         item.allergens.length
-          ? `Allergeni dichiarati: ${item.allergens.join(", ")}`
+          ? `${exportCopy("Allergeni dichiarati:")} ${item.allergens.map(value => exportCopy(value)).join(", ")}`
           : "",
       ]
         .filter(Boolean)
@@ -140,9 +145,9 @@ export async function exportMenu(
       ensure(title.length * 6 + lines.length * 4 + 6);
       pdf.setFont("helvetica", "bold");
       pdf.setFontSize(11);
-      pdf.text(title, 18, y);
+      pdf.text(exportCopy(title), 18, y);
       pdf.text(
-        `${Number(item.price).toFixed(2).replace(".", ",")} EUR`,
+        exportCopy(`${Number(item.price).toFixed(2).replace(".", ",")} EUR`),
         192,
         y,
         { align: "right" },
@@ -151,7 +156,7 @@ export async function exportMenu(
       if (lines.length) {
         pdf.setFont("helvetica", "normal");
         pdf.setFontSize(9);
-        pdf.text(lines, 18, y);
+        pdf.text(exportCopy(lines), 18, y);
         y += lines.length * 4;
       }
       y += 5;
@@ -162,20 +167,20 @@ export async function exportMenu(
   pdf.setFontSize(10);
   pdf.setFont("helvetica", "normal");
   pdf.text(
-    "Per allergie o intolleranze, confrontarsi con il locale nel sito reale.",
+    exportCopy("Per allergie o intolleranze, confrontarsi con il locale nel sito reale."),
     18,
     y,
   );
   y += 7;
-  pdf.textWithLink("Apri l'anteprima dimostrativa", 18, y, { url: link });
+  pdf.textWithLink(exportCopy("Apri l'anteprima dimostrativa"), 18, y, { url: link });
   const pages = pdf.getNumberOfPages();
   for (let page = 1; page <= pages; page++) {
     pdf.setPage(page);
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(9);
     pdf.setTextColor(24, 43, 66);
-    pdf.text("DEMO - Nessun ordine o pagamento reale", 18, 285);
-    pdf.text(`${page} / ${pages}`, 192, 285, { align: "right" });
+    pdf.text(exportCopy("DEMO - Nessun ordine o pagamento reale"), 18, 285);
+    pdf.text(exportCopy(`${page} / ${pages}`), 192, 285, { align: "right" });
   }
   pdf.save(`${demoFilename(name)}-menu-demo.pdf`);
 }
@@ -207,7 +212,7 @@ export async function exportHero(name: string) {
   ctx.font = "bold 20px sans-serif";
   ctx.textAlign = "center";
   ctx.fillText(
-    "DEMO · Nessun ordine reale",
+    exportCopy("DEMO · Nessun ordine reale"),
     canvas.width / 2,
     image.height + 40,
     canvas.width - 24,

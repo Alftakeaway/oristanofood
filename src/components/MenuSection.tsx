@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import { useState } from "react";
 
@@ -36,7 +38,7 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
 
   if (ordered.length === 0) return null;
 
-  return (
+  return <LocalizedContent>{(
     <section id="menu" className="py-20 of-menu">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-wrap items-end justify-between gap-6">
@@ -154,5 +156,5 @@ export default function MenuSection({ items, courses }: MenuSectionProps) {
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

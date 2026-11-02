@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import type { PizzaConfig, ShowcaseItem } from "@/lib/site-data";
 import { formatPrice } from "@/lib/format";
@@ -32,7 +34,7 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
     }))
     .filter((group) => group.rows.length > 0);
 
-  return (
+  return <LocalizedContent>{(
     <section
       id="pizza"
       className="border-y border-foreground/5 bg-background/60 py-20 of-pizza"
@@ -163,5 +165,5 @@ export default function PizzaSection({ items, config }: PizzaSectionProps) {
         )}
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

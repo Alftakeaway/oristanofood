@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, getSiteData } from "@/lib/site-data";
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
 
 export default async function PrivacyPage() {
   if (DEMO_MODE)
-    return (
+    return <LocalizedContent>{(
       <main id="main-content" className="mx-auto max-w-3xl px-4 py-16 space-y-6">
         <Link href="/" className="underline">
           Torna alla demo
@@ -48,11 +50,11 @@ export default async function PrivacyPage() {
           indicato.
         </p>
       </main>
-    );
+    )}</LocalizedContent>;
   const data = await getSiteData();
   const { businessInfo } = data;
 
-  return (
+  return <LocalizedContent>{(
     <main className="mx-auto max-w-3xl px-4 py-16">
       <p className="text-sm text-muted">
         <Link
@@ -181,5 +183,5 @@ export default async function PrivacyPage() {
         </p>
       </div>
     </main>
-  );
+  )}</LocalizedContent>;
 }

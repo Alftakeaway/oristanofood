@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import { DEMO_MODE } from "@/lib/demo-mode";
 import type { SiteData } from "@/lib/site-data";
 import { formatAddress, getPhoneHref } from "@/lib/site-utils";
@@ -9,7 +11,7 @@ interface FooterProps {
 export default function Footer({ data }: FooterProps) {
   const { businessInfo } = data;
 
-  return (
+  return <LocalizedContent>{(
     <footer id="contatti" className="bg-foreground text-background">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <p className="font-heading text-2xl">{businessInfo.name}</p>
@@ -67,5 +69,5 @@ export default function Footer({ data }: FooterProps) {
         </p>
       </div>
     </footer>
-  );
+  )}</LocalizedContent>;
 }

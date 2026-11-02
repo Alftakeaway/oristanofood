@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { type DemoPreset, type DemoSettings } from "../../lib/demo-settings";
 import { demoLink } from "../../lib/demo-share";
@@ -107,7 +109,7 @@ export default function MerchantWizard({
       notify("Il file non è leggibile. Scegli un altro logo.");
     reader.readAsDataURL(file);
   }
-  return (
+  return <LocalizedContent>{(
     <>
       <aside
         className="demo-bar merchant-bar"
@@ -395,5 +397,5 @@ export default function MerchantWizard({
       />
       <MerchantStudio name={settings.name.trim() || name} settings={settings} items={exportItems} contact={contact} bakery={bakery} />
     </>
-  );
+  )}</LocalizedContent>;
 }

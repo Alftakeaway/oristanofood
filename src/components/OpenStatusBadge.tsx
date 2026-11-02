@@ -1,4 +1,6 @@
 'use client';
+import {LocalizedContent} from "@/i18n";
+
 
 import { useEffect, useState } from 'react';
 import { DEMO_MODE } from '@/lib/demo-mode';
@@ -27,7 +29,7 @@ export default function OpenStatusBadge({ initial }: { initial: OpenStatus }) {
   }, []);
 
   const visible = DEMO_MODE ? initial : status;
-  return (
+  return <LocalizedContent>{(
     <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-surface/80 px-3 py-1.5 text-xs font-medium backdrop-blur">
       <span className="relative flex h-2 w-2">
         {visible.isOpen ? (
@@ -41,5 +43,5 @@ export default function OpenStatusBadge({ initial }: { initial: OpenStatus }) {
       </span>
       {visible.label}
     </span>
-  );
+  )}</LocalizedContent>;
 }

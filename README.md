@@ -105,3 +105,11 @@ il movimento; `prefers-reduced-motion` è rispettato senza nascondere contenuti.
 Crediti e licenze delle fotografie sono in `docs/PHOTO-CREDITS.json` e nella
 pagina pubblica `/crediti`. Le foto sono illustrative e non ritraggono un locale
 reale associato alla demo.
+
+## Italiano e English UK · refactoring
+
+Il selettore IT / EN usa URL separati: `/` per italiano, `/en` per inglese britannico. Le pagine interne mantengono la lingua e offrono link alternati per entrambe le versioni. La lingua HTML e i metadati sono preparati già nel documento iniziale; i dati del menu e gli identificativi dei prodotti restano condivisi.
+
+Le traduzioni sono in `src/i18n/en-GB.json`. Le chiavi corrispondono al testo originale italiano; aggiungere qui le nuove descrizioni, etichette e note. `src/i18n/copy.ts` gestisce interpolazioni, allergeni, importi e messaggi di anteprima; `LocalizedContent` traduce la presentazione React senza modificare quantità, campi dei moduli, identificativi, URL API o payload degli ordini. I nomi inseriti dal visitatore che non corrispondono al dizionario vengono conservati. `npm run check:i18n` verifica i casi operativi essenziali. PDF e QR della demo rispettano la lingua selezionata.
+
+L’upgrade editoriale usa GSAP ScrollTrigger per una trasformazione fotografica reversibile durante lo scroll, soltanto su schermi ampi con puntatore preciso. I controlli e il testo mantengono una posizione leggibile. Movimento ridotto, pausa e cambio dimensione rimuovono l’effetto e ripristinano la composizione di base. Non vengono aggiunti modelli o video pesanti. GSAP è gratuito sotto la GSAP Standard License; le skill di progettazione sono MIT. Le verifiche mobile sono eseguite con emulazione browser, non costituiscono misure di prestazioni su ogni dispositivo fisico.

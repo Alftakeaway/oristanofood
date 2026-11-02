@@ -1,10 +1,12 @@
+
+import {LocalizedContent} from "@/i18n";
 import Link from "next/link";
-import credits from "../../../docs/PHOTO-CREDITS.json";
+import credits from "../../../../docs/PHOTO-CREDITS.json";
 
 export const metadata = { title: "Crediti fotografici" };
 
 export default function CreditsPage() {
-  return (
+  return <LocalizedContent>{(
     <main id="main-content" className="mx-auto max-w-3xl px-6 py-16">
       <Link href="/" className="of-text-link">
         ← Torna all’osteria
@@ -49,5 +51,5 @@ export default function CreditsPage() {
         ))}
       </ul>
     </main>
-  );
+  )}</LocalizedContent>;
 }

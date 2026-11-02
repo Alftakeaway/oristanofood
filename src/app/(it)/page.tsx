@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import DemoHome from "@/components/demo/DemoHome";
 import { getSiteData, getSections } from "@/lib/site-data";
 import { resolveBaseUrl } from "@/lib/base-url";
@@ -10,7 +12,7 @@ import {
 } from "@/lib/open-status";
 import { DEMO_MODE } from "@/lib/demo-mode";
 export default async function Page() {
-  if (DEMO_MODE) return <DemoHome />;
+  if (DEMO_MODE) return <LocalizedContent>{<DemoHome />}</LocalizedContent>;
   const data = await getSiteData();
   const sections = getSections(data);
   const exceptions = data.exceptions ?? [];
@@ -142,7 +144,7 @@ export default async function Page() {
     }),
   };
 
-  return (
+  return <LocalizedContent>{(
     <>
       <script
         type="application/ld+json"
@@ -152,5 +154,5 @@ export default async function Page() {
       />
       <DemoHome />
     </>
-  );
+  )}</LocalizedContent>;
 }

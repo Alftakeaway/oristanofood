@@ -1,7 +1,9 @@
+
+import {LocalizedContent} from "@/i18n";
 import Image from "next/image";
 
 export default function Editorial() {
-  return (
+  return <LocalizedContent>{(
     <section className="of-editorial" aria-labelledby="story-title">
       <div className="of-container of-editorial__grid">
         <div className="of-editorial__image" data-reveal>
@@ -45,11 +47,11 @@ export default function Editorial() {
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }
 
 export function Atmosphere() {
-  return (
+  return <LocalizedContent>{(
     <section className="of-atmosphere" aria-labelledby="atmosphere-title">
       <div className="of-container">
         <div className="of-section-head" data-reveal>
@@ -91,5 +93,5 @@ export function Atmosphere() {
         </div>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

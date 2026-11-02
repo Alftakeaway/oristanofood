@@ -1,3 +1,5 @@
+
+import {LocalizedContent} from "@/i18n";
 import type { ShowcaseItem } from '@/lib/site-data';
 import { ALLERGEN_CATEGORIES, itemAllergenKeys } from '@/lib/allergens';
 
@@ -12,7 +14,7 @@ export default function AllergenSection({ items }: { items: ShowcaseItem[] }) {
     (category) => !present.some((entry) => entry.key === category.key),
   );
 
-  return (
+  return <LocalizedContent>{(
     <section id="allergeni" className="border-t border-foreground/5 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-heading text-3xl font-medium md:text-4xl">Allergeni e diete</h2>
@@ -94,5 +96,5 @@ export default function AllergenSection({ items }: { items: ShowcaseItem[] }) {
         )}
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }

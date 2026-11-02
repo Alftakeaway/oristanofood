@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 
 import {
   createContext,
@@ -117,7 +119,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     [lines, count, total, isOpen, add, setQty],
   );
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return <LocalizedContent>{<CartContext.Provider value={value}>{children}</CartContext.Provider>}</LocalizedContent>;
 }
 
 export function AddToCartButton({
@@ -138,13 +140,13 @@ export function AddToCartButton({
 
   if (variant === "row") {
     if (!item.available) {
-      return (
+      return <LocalizedContent>{(
         <span className="text-xs font-medium uppercase tracking-wide text-muted">
           Esaurito
         </span>
-      );
+      )}</LocalizedContent>;
     }
-    return (
+    return <LocalizedContent>{(
       <button
         type="button"
         onClick={onAdd}
@@ -153,11 +155,11 @@ export function AddToCartButton({
       >
         {added ? "✓" : "+"}
       </button>
-    );
+    )}</LocalizedContent>;
   }
 
   if (!item.available) {
-    return (
+    return <LocalizedContent>{(
       <button
         type="button"
         disabled
@@ -165,10 +167,10 @@ export function AddToCartButton({
       >
         Esaurito
       </button>
-    );
+    )}</LocalizedContent>;
   }
 
-  return (
+  return <LocalizedContent>{(
     <button
       type="button"
       onClick={onAdd}
@@ -176,7 +178,7 @@ export function AddToCartButton({
     >
       {added ? "Aggiunto ✓" : "Aggiungi all'ordine"}
     </button>
-  );
+  )}</LocalizedContent>;
 }
 
 export function CartWidget({
@@ -221,7 +223,7 @@ export function CartWidget({
     return parts.join("\n");
   }, [lines, total, selectedSlot]);
 
-  return (
+  return <LocalizedContent>{(
     <>
       <button
         type="button"
@@ -391,5 +393,5 @@ export function CartWidget({
         </div>
       </dialog>
     </>
-  );
+  )}</LocalizedContent>;
 }

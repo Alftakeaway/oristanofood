@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 import { useEffect, useRef, useState } from "react";
 import type { DemoSettings } from "../../lib/demo-settings";
 import { COMMERCIAL_EMAIL, leadRequest } from "../../lib/lead-request";
@@ -45,7 +47,7 @@ export default function MerchantInterest({
       /* Keep this decision in memory. */
     }
   }
-  return (
+  return <LocalizedContent>{(
     <>
       {visible && (
         <aside
@@ -220,5 +222,5 @@ export default function MerchantInterest({
         </p>
       </dialog>
     </>
-  );
+  )}</LocalizedContent>;
 }

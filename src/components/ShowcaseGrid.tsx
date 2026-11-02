@@ -1,4 +1,6 @@
 "use client";
+import {LocalizedContent} from "@/i18n";
+
 import type { ShowcaseItem } from "@/lib/site-data";
 import ProductGallery from "./ProductGallery";
 import { AddToCartButton } from "./cart";
@@ -16,7 +18,7 @@ export default function ShowcaseGrid({
   const { diet } = useDietFilter();
   if (!items.length) return null;
   const filtered = items.filter((item) => matchesDiet(item, diet));
-  return (
+  return <LocalizedContent>{(
     <section id={id} className="of-specialties">
       <div className="of-container">
         <div className="of-section-head" data-reveal>
@@ -75,5 +77,5 @@ export default function ShowcaseGrid({
         </a>
       </div>
     </section>
-  );
+  )}</LocalizedContent>;
 }
