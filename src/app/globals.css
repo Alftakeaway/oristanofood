@@ -1278,3 +1278,16 @@ html[data-motion="off"] .of-product-photo {
 @media(max-width:800px){.of-hero{grid-template-columns:1fr;padding:2rem 6vw 3rem;gap:2rem}.of-hero__visual{order:0;min-height:400px;border-radius:50% 50% 0 0}.of-hero__copy{padding:0}.of-hero__name{font-size:clamp(4rem,18vw,7rem)}.of-hero__actions{flex-direction:row;align-items:center}.of-course{padding:1.2rem}}
 .of-header { background:#f5f8f5f5; }.of-hero__visual { border-radius:2px; }.of-hero__photo { filter:saturate(.85); }
 @media(max-width:800px){.of-hero{grid-template-columns:minmax(0,1fr)}.of-hero__copy,.of-hero__visual{min-width:0;width:100%}.of-hero__title,.of-hero__description{overflow-wrap:anywhere}.of-hero__actions{gap:1rem}}
+
+/* Osteria chrome: a quiet editorial colophon and text navigation. */
+.demo-host .demo-bar{background:#164f63;color:#f5f8f5;border:0;font-size:12px}
+.demo-host .demo-bar button,.demo-host .demo-bar .merchant-contact{background:transparent;color:#f5f8f5;border:0;border-bottom:1px solid #a9c7cd;border-radius:0;padding:5px 0;box-shadow:none;font-weight:400}
+.demo-host .merchant-bar-actions{gap:24px}
+.of-header__inner{flex-wrap:wrap}.of-header__tools{gap:18px}
+.of-header .language-switcher{border:0;background:transparent;border-radius:0;gap:10px;padding:0}
+.of-header .language-switcher a{border-radius:0;background:transparent;color:#50666b;padding:6px 0;min-width:0}
+.of-header .language-switcher a[aria-current=page]{color:#164f63;background:transparent;border-bottom:1px solid #164f63}
+.of-header__book{background:transparent;color:#164f63;border-bottom:1px solid #164f63;border-radius:0;padding:8px 0}
+.of-header__status{display:none}.of-header .of-motion-toggle{border:0;border-radius:0;background:transparent}
+@media(min-width:1000px){.of-header__inner{padding-block:18px}.of-brand{flex:1}.of-nav{order:3;width:100%;justify-content:center;padding-top:15px;border-top:1px solid #d4e0dc;margin-top:12px}}
+@media(max-width:600px){.demo-host .merchant-bar-actions{gap:12px}.of-header__tools{gap:10px}.demo-host .demo-bar button,.demo-host .demo-bar .merchant-contact{font-size:11px}}
