@@ -1291,3 +1291,4 @@ html[data-motion="off"] .of-product-photo {
 .of-header__status{display:none}.of-header .of-motion-toggle{border:0;border-radius:0;background:transparent}
 @media(min-width:1000px){.of-header__inner{padding-block:18px}.of-brand{flex:1}.of-nav{order:3;width:100%;justify-content:center;padding-top:15px;border-top:1px solid #d4e0dc;margin-top:12px}}
 @media(max-width:600px){.demo-host .merchant-bar-actions{gap:12px}.of-header__tools{gap:10px}.demo-host .demo-bar button,.demo-host .demo-bar .merchant-contact{font-size:11px}}
+.of-header .language-switcher a[aria-current=page]{color:#164f63!important}
