@@ -1255,3 +1255,26 @@ html[data-motion="off"] .of-product-photo {
  .of-header__book{display:none}
  .of-motion-toggle,.of-menu-toggle{min-width:32px;flex-shrink:0}
 }
+
+/* Fenicio: a Mediterranean dining journal, marine ink and porcelain. */
+.demo-host { --site-primary:#164f63 !important; --site-secondary:#356b77 !important; --site-accent:#c8ddd9 !important; --site-background:#f5f8f5 !important; --site-surface:#e8f0ee !important; --site-foreground:#17333d !important; --site-muted:#50666b !important; background:var(--site-background); color:var(--site-foreground); }
+.of-hero { grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); padding:3rem 4vw 5rem; gap:5vw; }
+.of-hero__visual { order:-1; min-height:650px; margin:0; border-radius:50% 50% 0 0; background:#c8ddd9; }
+.of-hero__copy { padding:4rem 0 0; }
+.of-hero__title,.font-heading,.of-hero__line { font-family:'Palatino Linotype',Palatino,Georgia,serif; font-weight:400; }
+.of-hero__name { font-size:clamp(4.5rem,8.5vw,9rem); letter-spacing:-.055em; }
+.of-hero__title > span:first-child { font-size:1.7rem; letter-spacing:.04em; }
+.of-hero__line { font-size:clamp(2.2rem,3.5vw,3.8rem); line-height:1.1; }
+.of-hero__line em { font-style:normal; }
+.of-star,.of-hero__stamp { display:none; }
+.of-button { background:transparent; color:#164f63; border:1px solid #164f63; border-radius:0; padding:1rem 1.7rem; }
+.of-button:hover { background:#164f63; color:white; }
+.of-hero__actions { align-items:flex-start; flex-direction:column; gap:1rem; }
+.of-menu { background:#e8f0ee; }
+.of-menu > div { max-width:960px; }
+.of-course { padding:2rem; background:#f5f8f5; border-top:2px solid #164f63; }
+.of-course-nav button { border-radius:0; }
+@media(min-width:1000px){.of-menu .md\:grid-cols-2{grid-template-columns:1fr}.of-course ul{display:grid;grid-template-columns:1fr 1fr;gap:2rem}.of-course ul li{margin:0}}
+@media(max-width:800px){.of-hero{grid-template-columns:1fr;padding:2rem 6vw 3rem;gap:2rem}.of-hero__visual{order:0;min-height:400px;border-radius:50% 50% 0 0}.of-hero__copy{padding:0}.of-hero__name{font-size:clamp(4rem,18vw,7rem)}.of-hero__actions{flex-direction:row;align-items:center}.of-course{padding:1.2rem}}
+.of-header { background:#f5f8f5f5; }.of-hero__visual { border-radius:2px; }.of-hero__photo { filter:saturate(.85); }
+@media(max-width:800px){.of-hero{grid-template-columns:minmax(0,1fr)}.of-hero__copy,.of-hero__visual{min-width:0;width:100%}.of-hero__title,.of-hero__description{overflow-wrap:anywhere}.of-hero__actions{gap:1rem}}
